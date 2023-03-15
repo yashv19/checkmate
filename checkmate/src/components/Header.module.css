@@ -1,0 +1,7 @@
+.title {
+    font-weight: bold;
+    width: 20rem;
+    z-index: 200;
+    position: relative;
+    background-color: white;
+}

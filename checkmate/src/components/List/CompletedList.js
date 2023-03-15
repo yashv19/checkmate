@@ -1,4 +1,4 @@
-import ListItem from './ListItem';
+import CompletedListItem from './CompletedListItem';
 
 const listItems = [
     {
@@ -19,12 +19,12 @@ const listItems = [
     },
 ];
 
-const List = props => {
+const CompletedList = props => {
     return (
         <>
-            {listItems.map(item => <ListItem todo={item.todo} key={item.id} />)}
+            {listItems.map(item => <CompletedListItem todo={item.todo} key={item.id} />)}
         </>
     )
 }
 
-export default  List;
+export default  CompletedList;

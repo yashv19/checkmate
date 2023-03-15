@@ -1,15 +1,14 @@
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
+import Card from './Card';
+import classes from './Header.module.css';
+
 
 const Header = props => {
-    const title = 'Check mate';
-
-    return <AppBar position="static">
-        <Toolbar>
-            <Typography variant="h3">
-                Check Mate
-            </Typography>
-        </Toolbar>
-    </AppBar>
+    return (
+        <Card className={classes.title}>
+            <Typography variant="h3" sx={{fontWeight: '600', fontStyle: "italic"}}>✔ Check Mate</Typography>
+        </Card>
+    )
 }
 
 export default Header;

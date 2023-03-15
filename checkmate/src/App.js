@@ -1,16 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import coverPhotoSrc from './coverphoto.avif';
 import Header from './components/Header';
-import List from './components/List/List';
+import ListContainer from './components/List/ListContainer';
+import theme from './components/UI/Theme';
+import { ThemeProvider } from '@emotion/react';
 
 function App() {
   return (
-    <div>
-      <header>
-        <Header />
-        <List />
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <img className="coverphoto" src={coverPhotoSrc} alt="cover" />
+      <div className="App">
+          <Header />
+          <ListContainer />
+      </div>
+    </ThemeProvider>
   );
 }
 
