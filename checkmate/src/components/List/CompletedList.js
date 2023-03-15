@@ -3,19 +3,19 @@ import CompletedListItem from './CompletedListItem';
 const listItems = [
     {
         id: 1,
-        todo: 'Get Brian up to date API vs Export mapping file'
+        todo: 'Eat'
     },
     {
         id: 2,
-        todo: 'eDisco script to export a channel'
+        todo: 'Sleep'
     },
     {
         id: 3,
-        todo: 'Explore platform 2.0'
+        todo: 'Success'
     },
     {
         id: 4,
-        todo: 'Wellness reimbursement'
+        todo: 'Repeat.'
     },
 ];
 

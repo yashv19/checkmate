@@ -3,15 +3,15 @@ import ListItem from './ListItem';
 const listItems = [
     {
         id: 1,
-        todo: 'Get Brian up to date API vs Export mapping file'
+        todo: 'Update the mapping file with recent data'
     },
     {
         id: 2,
-        todo: 'eDisco script to export a channel'
+        todo: 'Figure out which database to use for this app'
     },
     {
         id: 3,
-        todo: 'Explore platform 2.0'
+        todo: 'Make lunch'
     },
     {
         id: 4,
