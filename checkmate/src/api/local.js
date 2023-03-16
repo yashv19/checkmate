@@ -26,7 +26,9 @@ const deleteItem = key => {
 }
 
 const clearCompletedItems = () => {
-
+    const list = getList();
+    const filteredItems = list.filter(todo => !todo.checked);
+    localStorage.setItem('todos', JSON.stringify(filteredItems));
 }
 
 const storageAPI = {

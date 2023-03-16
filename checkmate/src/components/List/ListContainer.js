@@ -5,11 +5,14 @@ import List from "./List";
 import { Button, Divider, Typography } from "@mui/material";
 import { ClearAllRounded } from "@mui/icons-material";
 import classes from './ListContainer.module.css';
+import { useDispatch } from "react-redux";
+import { storeActions } from "../../store";
 
 const ListContainer = props => {
+    const dispatch = useDispatch();
 
     const clearCompletedHandler = () => {
-        console.log('clear');
+        dispatch(storeActions.clearCompleted());
     }
 
     return (

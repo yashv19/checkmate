@@ -17,6 +17,10 @@ const slice = createSlice({
             const itemToUpdateIndex = state.todos.findIndex(todo => todo.id === action.payload.id);
             state.todos[itemToUpdateIndex] = action.payload;
             storageAPI.update(action.payload);
+        },
+        clearCompleted (state) {
+            state.todos = state.todos.filter(todo => !todo.checked);
+            storageAPI.clearCompleted();
         }
     }
 })
