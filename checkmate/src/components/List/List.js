@@ -8,13 +8,11 @@ let renderedList;
 const List = props => {
     let todos = useSelector(state => state.todos);
     // const [emptyList, setEmptyList] = useState(true);
-    if (todos.length > 0) {
-        todos = todos.filter(todo => !todo.checked)
-        renderedList = todos.slice(0).reverse().map(item => {
-            return <ListItem item={item} key={item.id} />
-        });
-        // setEmptyList(false);
-    }
+    todos = todos.filter(todo => !todo.checked)
+    renderedList = todos.slice(0).reverse().map(item => {
+        return <ListItem item={item} key={item.id} />
+    });
+
 
     return (
         <>
