@@ -1,28 +1,27 @@
+import { Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
+import storageAPI from '../../api/local';
 import ListItem from './ListItem';
+import { useSelector } from 'react-redux';
 
-const listItems = [
-    {
-        id: 1,
-        todo: 'Update the mapping file with recent data'
-    },
-    {
-        id: 2,
-        todo: 'Figure out which database to use for this app'
-    },
-    {
-        id: 3,
-        todo: 'Make lunch'
-    },
-    {
-        id: 4,
-        todo: 'Wellness reimbursement'
-    },
-];
+let renderedList;
 
 const List = props => {
+    const todos = useSelector(state => state.todos);
+    // const [emptyList, setEmptyList] = useState(true);
+    if (todos.length > 0) {
+        renderedList = todos.map(item => {
+            if (!item.completed) {
+                return <ListItem todo={item.todo} key={item.id} />
+            }
+        });
+        // setEmptyList(false);
+    }
+
     return (
         <>
-            {listItems.map(item => <ListItem todo={item.todo} key={item.id} />)}
+            {renderedList}
+            {/* {emptyList && <Typography>Nothing todo</Typography>} */}
         </>
     )
 }
