@@ -6,13 +6,12 @@ import { useSelector } from 'react-redux';
 let renderedList;
 
 const List = props => {
-    const todos = useSelector(state => state.todos);
+    let todos = useSelector(state => state.todos);
     // const [emptyList, setEmptyList] = useState(true);
     if (todos.length > 0) {
+        todos = todos.filter(todo => !todo.completed)
         renderedList = todos.map(item => {
-            if (!item.completed) {
-                return <ListItem todo={item.todo} key={item.id} />
-            }
+            return <ListItem todo={item.todo} key={item.id} />
         });
         // setEmptyList(false);
     }
@@ -25,4 +24,4 @@ const List = props => {
     )
 }
 
-export default  List;
+export default List;
