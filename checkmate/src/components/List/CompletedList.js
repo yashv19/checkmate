@@ -1,28 +1,21 @@
 import CompletedListItem from './CompletedListItem';
+import { useSelector } from 'react-redux';
 
-const listItems = [
-    {
-        id: 1,
-        todo: 'Eat'
-    },
-    {
-        id: 2,
-        todo: 'Sleep'
-    },
-    {
-        id: 3,
-        todo: 'Success'
-    },
-    {
-        id: 4,
-        todo: 'Repeat.'
-    },
-];
+let renderedCompletedList;
 
 const CompletedList = props => {
+    let todos = useSelector(state => state.todos);
+
+    if (todos.length > 0) {
+        todos = todos.filter(todo => todo.checked)
+        renderedCompletedList = todos.map(item => {
+            return <CompletedListItem item={item} key={item.id} />
+        });
+    }
+
     return (
         <>
-            {listItems.map(item => <CompletedListItem todo={item.todo} key={item.id} />)}
+            {renderedCompletedList}
         </>
     )
 }

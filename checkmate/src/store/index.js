@@ -13,7 +13,11 @@ const slice = createSlice({
             state.todos.push(action.payload)
             storageAPI.add(action.payload)
         },
-
+        updateItem (state, action) {
+            const itemToUpdateIndex = state.todos.findIndex(todo => todo.id === action.payload.id);
+            state.todos[itemToUpdateIndex] = action.payload;
+            storageAPI.update(action.payload);
+        }
     }
 })
 

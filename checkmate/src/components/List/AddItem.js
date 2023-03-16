@@ -12,7 +12,7 @@ const AddItem = props => {
             storeActions.addItem(
                 {
                     id: Math.random(),
-                    completed: false,
+                    checked: false,
                     todo: todoRef.current.value,
                 }
             )
