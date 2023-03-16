@@ -23,6 +23,7 @@ const AddItem = props => {
         <form onSubmit={submitHandler}>
             <Input
                 fullWidth
+                autoFocus
                 disableUnderline
                 placeholder="Write something"
                 margin="none"

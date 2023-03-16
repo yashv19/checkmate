@@ -9,8 +9,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <img className="coverphoto" src={coverPhotoSrc} alt="cover" />
+      <div className='vertical-spacer' />
       <div className="App">
           <Header />
+          <div className='vertical-spacer' />
           <ListContainer />
       </div>
     </ThemeProvider>

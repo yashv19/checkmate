@@ -1,9 +1,13 @@
 .App {
-  text-align: center;
+  text-align: left;
   margin: 0rem 10rem;
   display: flex;
   flex-direction: column;
 
+}
+
+.vertical-spacer {
+  margin: 2rem 0rem;
 }
 
 .coverphoto {
@@ -11,5 +15,7 @@
   height: 20rem;
   object-fit: cover;
   position: absolute;
+  top: 0;
+  left: 0;
   z-index: 0;
 }
