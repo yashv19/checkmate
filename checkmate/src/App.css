@@ -1,9 +1,19 @@
+body {
+  position: fixed;
+  overflow: hidden;
+}
+.mainwrapper {
+  width: 100vw;
+  height: 100vh;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+
 .App {
   text-align: left;
   margin: 0rem auto;
   display: flex;
   flex-direction: column;
-
 }
 
 .vertical-spacer {
