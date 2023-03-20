@@ -8,15 +8,13 @@ import { ThemeProvider } from '@emotion/react';
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="mainwrapper">
         <img className="coverphoto" src={coverPhotoSrc} alt="cover" />
         <div className='vertical-spacer' />
-        <div className="App">
+        <div className="maincontent">
           <Header />
           <div className='vertical-spacer' />
           <ListContainer />
         </div>
-      </div>
     </ThemeProvider>
   );
 }
