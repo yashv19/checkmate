@@ -1,6 +1,7 @@
 body {
   position: fixed;
   overflow: hidden;
+  background-color: white;
 }
 .mainwrapper {
   width: 100vw;
