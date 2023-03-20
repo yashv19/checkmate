@@ -3,6 +3,15 @@ body {
   overflow: hidden;
   background-color: white;
 }
+
+/* For notched phones */
+@supports(padding:max(0px)) {
+  body, header, footer {
+      padding-left: min(0vmin, env(safe-area-inset-left));
+      padding-right: min(0vmin, env(safe-area-inset-right));
+  }
+}
+
 .mainwrapper {
   width: 100vw;
   height: 100vh;
