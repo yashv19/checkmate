@@ -6,7 +6,7 @@ body {
   width: 100vw;
   height: 100vh;
   -webkit-overflow-scrolling: touch;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .App {
