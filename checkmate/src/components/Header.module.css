@@ -5,4 +5,5 @@
     position: relative;
     background-color: white;
     text-align: center;
+    min-width: max-content;
 }

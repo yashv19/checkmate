@@ -12,8 +12,6 @@ const List = props => {
     renderedList = todos.slice(0).reverse().map(item => {
         return <ListItem item={item} key={item.id} />
     });
-
-
     return (
         <>
             {renderedList}

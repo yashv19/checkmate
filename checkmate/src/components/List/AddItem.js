@@ -26,8 +26,7 @@ const AddItem = props => {
                 autoFocus
                 disableUnderline
                 placeholder="Write something"
-                margin="none"
-                startAdornment={<Checkbox sx={{ pl: 0 }} disabled />}
+                startAdornment={<Checkbox disabled />}
                 inputRef={todoRef}
             />
         </form>
