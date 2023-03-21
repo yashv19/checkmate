@@ -1,6 +1,6 @@
 {
   "short_name": "Checkmate",
-  "name": "Check Mate",
+  "name": "Checkmate",
   "icons": [
     {
       "src": "favicon.ico",
@@ -19,7 +19,7 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
+  "display": "fullscreen",
+  "theme_color": "#ffffff",
   "background_color": "#ffffff"
 }
