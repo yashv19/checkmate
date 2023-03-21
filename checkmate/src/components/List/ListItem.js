@@ -40,16 +40,11 @@ const ListItem = props => {
         )
     }
     const editFocusHandler = () => {
-        console.log(editRef.current.value);
         SetEditing(true);
     }
     const editBlurHandler = () => {
-        console.log('blur')
         SetEditing(false);
         setShowHover(false);
-    }
-    const editChangeHandler = () => {
-        console.log(editRef.current.value);
     }
     const editSubmitHandler = (event) => {
         event.preventDefault();
@@ -114,8 +109,8 @@ const ListItem = props => {
             sx={editSx}
             startAdornment={<Checkbox disabled />}
             inputRef={editRef}
+            defaultValue={props.item.todo}
             onBlur={editBlurHandler}
-            onChange={editChangeHandler}
         // endAdornment={
         //     <InputAdornment position="end">
         //         <ActionButton
