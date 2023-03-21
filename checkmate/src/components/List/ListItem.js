@@ -1,13 +1,22 @@
-import { Typography, Checkbox } from "@mui/material";
+import { Typography, Checkbox, Input } from "@mui/material";
 import { storeActions } from "../../store";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import classes from './ListItem.module.css';
 import { Box } from "@mui/system";
+import ActionButton from "../UI/ActionButton";
+import {
+    ModeEditOutlineRounded,
+    DeleteRounded,
+    // DragIndicatorRounded,
+}
+    from "@mui/icons-material";
 
 const ListItem = props => {
     const dispatch = useDispatch();
     const [showHover, setShowHover] = useState(false);
+    const [editing, SetEditing] = useState(false);
+    const editRef = useRef(props.item.todo);
 
     const checkHandler = (event) => {
         dispatch(
@@ -23,6 +32,37 @@ const ListItem = props => {
     const mouseLeaveHandler = () => {
         setShowHover(false);
     }
+    const deleteHandler = () => {
+        dispatch(
+            storeActions.deleteItem({
+                id: props.item.id
+            })
+        )
+    }
+    const editFocusHandler = () => {
+        console.log(editRef.current.value);
+        SetEditing(true);
+    }
+    const editBlurHandler = () => {
+        console.log('blur')
+        SetEditing(false);
+        setShowHover(false);
+    }
+    const editChangeHandler = () => {
+        console.log(editRef.current.value);
+    }
+    const editSubmitHandler = (event) => {
+        event.preventDefault();
+        dispatch(
+            storeActions.updateItem({
+                ...props.item,
+                todo: editRef.current.value,
+            })
+        );
+        SetEditing(false);
+        setShowHover(false);
+    }
+
     let sx = {
         cursor: 'default',
         m: 0,
@@ -34,23 +74,67 @@ const ListItem = props => {
             backgroundColor: 'rgba(240, 240, 240);',
         }
     }
+    let editSx = {
+        borderRadius: '0.5rem',
+        boxShadow: "0 0 0.5rem 0.1rem rgba(96, 96, 96, 0.269)"
+    }
+
+    const listItem = <Box
+        className={classes.liclass}
+        onMouseEnter={mouseEnterHandler}
+        onMouseLeave={mouseLeaveHandler}
+        sx={sx}
+    >
+        <div className={classes.lileft}>
+            <Checkbox disableRipple checked={props.item.checked} onChange={checkHandler} />
+            <Typography> {props.item.todo} </Typography>
+        </div>
+        {showHover && <div className={classes.liright}>
+            <ActionButton
+                sx={{ backgroundColor: "rgb(0, 128, 255)" }}
+                onClick={editFocusHandler}
+            >
+                <ModeEditOutlineRounded sx={{ width: "1rem", height: "1rem" }} />
+            </ActionButton>
+            <ActionButton sx={{ backgroundColor: "rgb(255, 90, 90)" }} onClick={deleteHandler}>
+                <DeleteRounded sx={{ width: "1rem", height: "1rem" }} />
+            </ActionButton>
+            {/* <ActionButton>
+                <DragIndicatorRounded sx={{ color: "gray" }} />
+            </ActionButton> */}
+        </div>}
+    </Box>;
+
+    const editingItem = <form onSubmit={editSubmitHandler}>
+        <Input
+            type="text"
+            fullWidth
+            autoFocus
+            disableUnderline
+            sx={editSx}
+            startAdornment={<Checkbox disabled />}
+            inputRef={editRef}
+            onBlur={editBlurHandler}
+            onChange={editChangeHandler}
+        // endAdornment={
+        //     <InputAdornment position="end">
+        //         <ActionButton
+        //             sx={{ backgroundColor: "rgb(0, 128, 255)" }}
+
+        //         >
+        //             <CheckRounded sx={{ width: "1rem", height: "1rem" }} />
+        //         </ActionButton>
+        //     </InputAdornment>
+        // }
+        />
+    </form>;
 
     return (
-        <Box
-            className={classes.liclass} 
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
-            sx={sx}
-        >
-            <div className={classes.lileft}>
-                <Checkbox disableRipple checked={props.item.checked} onChange={checkHandler} />
-                <Typography> {props.item.todo} </Typography>
-            </div>
-            {/* <div className={classes.liright}>
-                <p>actions</p>
-            </div> */}
-        </Box>
-    )
+        <>
+            {!editing && listItem}
+            {editing && editingItem}
+        </>
+    );
 }
 
 export default ListItem;

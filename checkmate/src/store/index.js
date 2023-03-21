@@ -18,6 +18,10 @@ const slice = createSlice({
             state.todos[itemToUpdateIndex] = action.payload;
             storageAPI.update(action.payload);
         },
+        deleteItem (state, action) {
+            state.todos = state.todos.filter(todo => todo.id !== action.payload.id);
+            storageAPI.delete(action.payload);
+        },
         clearCompleted (state) {
             state.todos = state.todos.filter(todo => !todo.checked);
             storageAPI.clearCompleted();

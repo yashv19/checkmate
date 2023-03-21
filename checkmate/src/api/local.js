@@ -21,8 +21,10 @@ const updateItem = (obj) => {
     localStorage.setItem('todos', JSON.stringify(list));
 }
 
-const deleteItem = key => {
-
+const deleteItem = payload => {
+    const list = getList();
+    const filteredItems = list.filter(todo => todo.id !== payload.id);
+    localStorage.setItem('todos', JSON.stringify(filteredItems));
 }
 
 const clearCompletedItems = () => {
