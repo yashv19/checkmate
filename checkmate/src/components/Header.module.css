@@ -1,9 +1,10 @@
 .title {
     font-weight: bold;
-    width: 20rem;
     z-index: 200;
     position: relative;
     background-color: white;
     text-align: center;
-    min-width: max-content;
+    max-width: 20rem;
+    width: 30%;
+    min-width: fit-content;
 }
