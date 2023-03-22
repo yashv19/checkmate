@@ -1,8 +1,6 @@
 body {
-  background-size: 30px 30px;
-  background-image:
-    linear-gradient(to right, rgb(230, 230, 230) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(230, 230, 230) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-image: radial-gradient(circle, #bcbcbc 1px, rgba(0, 0, 0, 0) 1px);
 }
 
 .maincontent {
