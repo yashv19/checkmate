@@ -1,4 +1,9 @@
-
+body {
+  background-size: 30px 30px;
+  background-image:
+    linear-gradient(to right, rgb(230, 230, 230) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(230, 230, 230) 1px, transparent 1px);
+}
 
 .maincontent {
   text-align: left;
@@ -8,7 +13,7 @@
 }
 
 .vertical-spacer {
-  margin: 2rem 0rem;
+  margin: 0.5rem 0rem;
 }
 
 .coverphoto {

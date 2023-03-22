@@ -18,6 +18,22 @@ const ListItem = props => {
     const [editing, SetEditing] = useState(false);
     const editRef = useRef(props.item.todo);
 
+    let sx = {
+        cursor: 'default',
+        m: 0,
+        borderRadius: '0.5rem',
+    }
+    if (showHover) {
+        sx = {
+            ...sx,
+            backgroundColor: 'rgba(240, 240, 240);',
+        }
+    }
+    let editSx = {
+        borderRadius: '0.5rem',
+        boxShadow: "0 0 0.5rem 0.1rem rgba(96, 96, 96, 0.269)"
+    }
+
     const checkHandler = (event) => {
         dispatch(
             storeActions.updateItem({
@@ -58,26 +74,24 @@ const ListItem = props => {
         setShowHover(false);
     }
 
-    let sx = {
-        cursor: 'default',
-        m: 0,
-        borderRadius: '0.5rem',
-    }
-    if (showHover) {
-        sx = {
-            ...sx,
-            backgroundColor: 'rgba(240, 240, 240);',
-        }
-    }
-    let editSx = {
-        borderRadius: '0.5rem',
-        boxShadow: "0 0 0.5rem 0.1rem rgba(96, 96, 96, 0.269)"
-    }
+    // const dragStartHandler = (e, position) => {
+    //     sx={
+    //         ...sx,
+    //         backgroundColor: "white",
+    //         boxShadow: "0 0 0.5rem 0.1rem rgba(96, 96, 96, 0.269)"
+    //     }
+    //     console.log(e);
+    //     console.log(position);
+    // }
+
+    
 
     const listItem = <Box
         className={classes.liclass}
         onMouseEnter={mouseEnterHandler}
         onMouseLeave={mouseLeaveHandler}
+        // draggable="true"
+        // onDragStart={dragStartHandler}
         sx={sx}
     >
         <div className={classes.lileft}>
