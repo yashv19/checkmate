@@ -8,20 +8,32 @@ import ActionButton from "../UI/ActionButton";
 import {
     ModeEditOutlineRounded,
     DeleteRounded,
-    // DragIndicatorRounded,
+    DragIndicatorRounded,
 }
     from "@mui/icons-material";
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 const ListItem = props => {
     const dispatch = useDispatch();
     const [showHover, setShowHover] = useState(false);
     const [editing, SetEditing] = useState(false);
     const editRef = useRef(props.item.todo);
+    const {
+        attributes,
+        listeners,
+        setNodeRef,
+        transform,
+        transition,
+        setActivatorNodeRef
+    } = useSortable({ id: props.item.id });
 
     let sx = {
         cursor: 'default',
         m: 0,
         borderRadius: '0.5rem',
+        transform: CSS.Transform.toString(transform),
+        transition,
     }
     if (showHover) {
         sx = {
@@ -74,25 +86,13 @@ const ListItem = props => {
         setShowHover(false);
     }
 
-    // const dragStartHandler = (e, position) => {
-    //     sx={
-    //         ...sx,
-    //         backgroundColor: "white",
-    //         boxShadow: "0 0 0.5rem 0.1rem rgba(96, 96, 96, 0.269)"
-    //     }
-    //     console.log(e);
-    //     console.log(position);
-    // }
-
-    
-
     const listItem = <Box
         className={classes.liclass}
         onMouseEnter={mouseEnterHandler}
         onMouseLeave={mouseLeaveHandler}
-        // draggable="true"
-        // onDragStart={dragStartHandler}
         sx={sx}
+        ref={setNodeRef}
+        {...attributes}
     >
         <div className={classes.lileft}>
             <Checkbox disableRipple checked={props.item.checked} onChange={checkHandler} />
@@ -108,9 +108,9 @@ const ListItem = props => {
             <ActionButton sx={{ backgroundColor: "rgb(255, 90, 90)" }} onClick={deleteHandler}>
                 <DeleteRounded sx={{ width: "1rem", height: "1rem" }} />
             </ActionButton>
-            {/* <ActionButton>
+            <ActionButton ref={setActivatorNodeRef} {...listeners}>
                 <DragIndicatorRounded sx={{ color: "gray" }} />
-            </ActionButton> */}
+            </ActionButton>
         </div>}
     </Box>;
 

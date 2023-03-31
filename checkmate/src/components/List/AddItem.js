@@ -11,7 +11,7 @@ const AddItem = props => {
         dispatch(
             storeActions.addItem(
                 {
-                    id: Math.random(),
+                    id: Date.now(),
                     checked: false,
                     todo: todoRef.current.value,
                 }

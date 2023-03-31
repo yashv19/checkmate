@@ -25,6 +25,12 @@ const slice = createSlice({
         clearCompleted (state) {
             state.todos = state.todos.filter(todo => !todo.checked);
             storageAPI.clearCompleted();
+        },
+        dragReorder  (state, action) {
+            const {oldIndex, newIndex} = action.payload;
+            const splicedArr = state.todos.splice(oldIndex, 1);
+            state.todos.splice(newIndex, -1, splicedArr[0]);
+            storageAPI.dragReorder(action.payload);
         }
     }
 })

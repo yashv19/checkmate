@@ -1,6 +1,7 @@
+import { forwardRef } from "react";
 import { IconButton } from "@mui/material";
 
-const ActionButton = props => {
+const ActionButton = forwardRef((props,ref) => {
 
     const sx = {
         ...props.sx,
@@ -12,14 +13,14 @@ const ActionButton = props => {
     }
     return (
         <IconButton
+            {...props}
             disableRipple
+            ref={ref}
             sx={sx}
-            onClick={props.onClick}
-            onBlur={props.onBlur}
         >
             {props.children}
         </IconButton>
     )
-}
+});
 
 export default ActionButton;

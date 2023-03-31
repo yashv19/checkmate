@@ -33,12 +33,21 @@ const clearCompletedItems = () => {
     localStorage.setItem('todos', JSON.stringify(filteredItems));
 }
 
+const dragReorder = (payload) => {
+    const list = getList();
+    const { oldIndex, newIndex } = payload;
+    const splicedArr = list.splice(oldIndex, 1);
+    list.splice(newIndex, -1, splicedArr[0]);
+    localStorage.setItem('todos', JSON.stringify(list));
+}
+
 const storageAPI = {
     get: getList,
     add: addItem,
     update: updateItem,
     delete: deleteItem,
-    clearCompleted: clearCompletedItems
+    clearCompleted: clearCompletedItems,
+    dragReorder,
 };
 
 export default storageAPI;
