@@ -10,14 +10,14 @@ import {
     verticalListSortingStrategy
 } from '@dnd-kit/sortable';
 import { storeActions } from '../../store';
+import { useState } from 'react';
 
 let renderedList;
 
 const List = props => {
     const dispatch = useDispatch();
     let todos = useSelector(state => state.todos);
-    todos = todos.filter(todo => !todo.checked)
-
+    
     const onDragEnd = (e) => {
         const { active, over } = e;
         if (active.id !== over.id) {

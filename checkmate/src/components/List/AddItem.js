@@ -12,7 +12,6 @@ const AddItem = props => {
             storeActions.addItem(
                 {
                     id: Date.now(),
-                    checked: false,
                     todo: todoRef.current.value,
                 }
             )

@@ -4,10 +4,8 @@ import { useSelector } from 'react-redux';
 let renderedCompletedList;
 
 const CompletedList = props => {
-    let todos = useSelector(state => state.todos);
-
-    todos = todos.filter(todo => todo.checked)
-    renderedCompletedList = todos.map(item => {
+    let completedList = useSelector(state => state.completed);
+    renderedCompletedList = completedList.map(item => {
         return <CompletedListItem item={item} key={item.id} />
     });
 

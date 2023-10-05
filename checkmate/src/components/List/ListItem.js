@@ -48,9 +48,8 @@ const ListItem = props => {
 
     const checkHandler = (event) => {
         dispatch(
-            storeActions.updateItem({
+            storeActions.completeItem({
                 ...props.item,
-                checked: event.target.checked,
             })
         )
     }
@@ -95,7 +94,7 @@ const ListItem = props => {
         {...attributes}
     >
         <div className={classes.lileft}>
-            <Checkbox disableRipple checked={props.item.checked} onChange={checkHandler} />
+            <Checkbox disableRipple checked={false} onChange={checkHandler} />
             <Typography> {props.item.todo} </Typography>
         </div>
         {showHover && <div className={classes.liright}>

@@ -2,7 +2,8 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import storageAPI from "../api/local";
 
 const initialState = {
-    todos: storageAPI.get()
+    todos: storageAPI.getTodos(),
+    completed: storageAPI.getCompleted(),
 }
 
 const slice = createSlice({
@@ -11,19 +12,30 @@ const slice = createSlice({
     reducers: {
         addItem (state, action) {
             state.todos.push(action.payload)
-            storageAPI.add(action.payload)
+            storageAPI.addItem(action.payload)
         },
         updateItem (state, action) {
             const itemToUpdateIndex = state.todos.findIndex(todo => todo.id === action.payload.id);
             state.todos[itemToUpdateIndex] = action.payload;
-            storageAPI.update(action.payload);
+            storageAPI.updateItem(action.payload);
+        },
+        completeItem (state, action) {
+            const completedTodo = state.todos.find(todo => todo.id === action.payload.id);
+            state.todos = state.todos.filter(todo => todo.id !== action.payload.id);
+            state.completed.push(completedTodo);
+            storageAPI.completeItem(action.payload);
+        },
+        uncheckTodo (state, action) {
+            state.completed = state.completed.filter(item => item.id !== action.payload.id);
+            state.todos.push(action.payload);
+            storageAPI.uncheckTodo(action.payload);
         },
         deleteItem (state, action) {
             state.todos = state.todos.filter(todo => todo.id !== action.payload.id);
-            storageAPI.delete(action.payload);
+            storageAPI.deleteItem(action.payload);
         },
         clearCompleted (state) {
-            state.todos = state.todos.filter(todo => !todo.checked);
+            state.completed = [];
             storageAPI.clearCompleted();
         },
         dragReorder  (state, action) {
