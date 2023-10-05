@@ -10,7 +10,6 @@ import {
     verticalListSortingStrategy
 } from '@dnd-kit/sortable';
 import { storeActions } from '../../store';
-import { useState } from 'react';
 
 let renderedList;
 
