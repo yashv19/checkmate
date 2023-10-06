@@ -2,7 +2,7 @@ import { Checkbox, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { storeActions } from "../../store";
 import { useDispatch } from "react-redux";
-import classes from './ListItem.module.css';
+import classes from './ItemContainer.module.css';
 import { useState } from "react";
 
 const CompletedListItem = props => {

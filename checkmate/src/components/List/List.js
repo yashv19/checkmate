@@ -1,5 +1,4 @@
 // import { useState } from 'react';
-import ListItem from './ListItem';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     DndContext,
@@ -10,6 +9,8 @@ import {
     verticalListSortingStrategy
 } from '@dnd-kit/sortable';
 import { storeActions } from '../../store';
+import TodoListItem from './TodoListItem';
+import ListSectionHeader from './ListSectionHeader';
 
 let renderedList;
 
@@ -30,7 +31,10 @@ const List = props => {
     }
 
     renderedList = todos.slice(0).reverse().map(item => {
-        return <ListItem item={item} key={item.id} />
+         if (item.type === 'section_header') {
+            return <ListSectionHeader item={item} key={item.id} />
+         }
+         return <TodoListItem item={item} key={item.id} />
     });
     return (
         <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
