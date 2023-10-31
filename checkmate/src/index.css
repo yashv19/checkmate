@@ -1,8 +1,13 @@
 body {
+  overflow: hidden;
+}
+body {
   margin: 0;
   font-family: 'Itim', -apple-system,'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-size: 20px 20px;
+  background-image: radial-gradient(circle, #bcbcbc 1px, rgba(0, 0, 0, 0) 1px);
 }
 
 code {

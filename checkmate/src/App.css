@@ -1,11 +1,10 @@
-body {
-  background-size: 20px 20px;
-  background-image: radial-gradient(circle, #bcbcbc 1px, rgba(0, 0, 0, 0) 1px);
-  height: 100%;
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  overflow: auto;
   overscroll-behavior: none;
-  overflow-y: scroll;
 }
-
 .maincontent {
   text-align: left;
   margin: 0rem auto;
