@@ -1,9 +1,8 @@
 
 .liclass {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    /* display: flex;
+    justify-content: space-between; */
+    position: relative;
     cursor: default;
     border-radius: 1rem;
     margin: 0;
@@ -12,14 +11,17 @@
 
 .lileft {
     display: flex;
-    flex-direction: row;
     justify-content: left;
     align-items: center;
 }
 
 .liright {
+    position: absolute;
     display: flex;
-    flex-direction: row;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    align-items: center;
     justify-content: right;
     z-index: 300;
 }

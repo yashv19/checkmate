@@ -43,7 +43,8 @@ const TodoListItem = props => {
     }
     let editSx = {
         borderRadius: '0.5rem',
-        boxShadow: "0 0 0.5rem 0.1rem rgba(96, 96, 96, 0.269)"
+        boxShadow: "0 0 0.5rem 0.1rem rgba(96, 96, 96, 0.269)",
+        width: "100%",
     }
 
     const listItem = <div className={classes.lileft}>
