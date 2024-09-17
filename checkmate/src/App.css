@@ -13,15 +13,17 @@
 }
 
 .vertical-spacer {
-  margin: 0.5rem 0rem;
+  margin: 1rem 0rem;
 }
 
-.coverphoto {
-  width: 100%;
-  height: 20rem;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
+.tab-card {
+  background-color: #fff;
+  align-self: center;
+  max-width: 50rem;
+  width: 85%;
+}
+
+.folder-tab {
+  background-color: #fff;
+  text-transform: none;
 }

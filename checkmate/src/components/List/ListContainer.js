@@ -1,8 +1,7 @@
-import Card from "../Card";
 import AddItem from "./AddItem";
 import CompletedList from "./CompletedList";
 import List from "./List";
-import { Button, Divider, Typography } from "@mui/material";
+import { Button, Divider, Typography, Box } from "@mui/material";
 import { ClearAllRounded } from "@mui/icons-material";
 import classes from './ListContainer.module.css';
 import { useDispatch } from "react-redux";
@@ -16,7 +15,7 @@ const ListContainer = props => {
     }
 
     return (
-        <Card className={classes.list}>
+        <Box className={classes.list}>
             <AddItem />
             <List />
             <Divider sx={{ m: '0.3rem' }} />
@@ -31,7 +30,7 @@ const ListContainer = props => {
                 <Button onClick={clearCompletedHandler} startIcon={<ClearAllRounded />}>Clear</Button>
             </div>
             <CompletedList />
-        </Card>
+        </Box>
     )
 }
 
