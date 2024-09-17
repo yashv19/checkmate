@@ -8,6 +8,7 @@ import { ThemeProvider } from '@emotion/react';
 import TabPanel from './components/UI/TabPanel';
 import { useState } from 'react';
 import Card from './components/Card';
+import NotesContainer from './components/Notes/NotesContainer';
 
 function App() {
 
@@ -32,9 +33,7 @@ function App() {
               <ListContainer />
             </TabPanel>
             <TabPanel value={tabValue} index={1}>
-              <div>
-                Notes
-              </div>
+              <NotesContainer />
             </TabPanel>
 
           </Card>
