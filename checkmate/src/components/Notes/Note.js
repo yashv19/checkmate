@@ -1,19 +1,21 @@
-import { Box } from '@mui/material'
 import React from 'react'
 
-const Note = () => {
+const Note = (props) => {
   return (
-    <Box
-        contentEditable
-        sx={{
-            width: "100%",
-            minHeight: "30rem",
+    <textarea
+        style={{
+            width: "75%",
+            height: "100%",
             padding: "1rem",
             boxSizing: "border-box",
             hyphens: "auto",
-            outline: "none"
+            outline: "none",
+            resize: "none",
+            border: "0px",
         }}
-    />
+    >
+        {props.children}
+    </textarea>
   )
 }
 
