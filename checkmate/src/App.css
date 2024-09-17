@@ -16,11 +16,18 @@
   margin: 1rem 0rem;
 }
 
-.tab-card {
+.content-card {
   background-color: #fff;
   align-self: center;
   max-width: 50rem;
   width: 85%;
+}
+
+.tab-card {
+  align-self: center;
+  background-color: #fff;
+  width: 50%;
+  max-width: 30rem;
 }
 
 .folder-tab {

@@ -25,10 +25,17 @@ function App() {
           <Header />
           <div className='vertical-spacer' />
           <Card className="tab-card">
-            <Tabs value={tabValue} onChange={tabChangeHandler} variant="fullWidth">
+            <Tabs
+              value={tabValue}
+              onChange={tabChangeHandler}
+              variant="fullWidth"
+            >
               <Tab label="Todo List" />
               <Tab label="Notepad" />
             </Tabs>
+          </Card>
+          <div className="vertical-spacer" />
+          <Card className="content-card">
             <TabPanel value={tabValue} index={0}>
               <ListContainer />
             </TabPanel>
