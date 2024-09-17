@@ -8,7 +8,7 @@ import {
     SortableContext,
     verticalListSortingStrategy
 } from '@dnd-kit/sortable';
-import { storeActions } from '../../store';
+import { storeActions } from './store/listSlice';
 import TodoListItem from './TodoListItem';
 import ListSectionHeader from './ListSectionHeader';
 

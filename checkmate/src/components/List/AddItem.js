@@ -1,6 +1,6 @@
 import { Checkbox, Divider, Input } from "@mui/material";
 import { useRef } from "react";
-import { storeActions } from "../../store";
+import { storeActions } from './store/listSlice';
 import { useDispatch } from "react-redux";
 import {Button } from "@mui/material";
 import { AddRounded } from "@mui/icons-material";

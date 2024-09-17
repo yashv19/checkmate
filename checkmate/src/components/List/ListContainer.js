@@ -5,7 +5,7 @@ import { Button, Divider, Typography, Box } from "@mui/material";
 import { ClearAllRounded } from "@mui/icons-material";
 import classes from './ListContainer.module.css';
 import { useDispatch } from "react-redux";
-import { storeActions } from "../../store";
+import { storeActions } from './store/listSlice';
 
 const ListContainer = props => {
     const dispatch = useDispatch();

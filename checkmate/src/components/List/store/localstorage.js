@@ -63,7 +63,7 @@ const dragReorder = (payload) => {
     localStorage.setItem('todos', JSON.stringify(list));
 }
 
-const storageAPI = {
+const listAPI = {
     getTodos,
     getCompleted,
     addItem,
@@ -75,4 +75,4 @@ const storageAPI = {
     dragReorder,
 };
 
-export default storageAPI;
+export default listAPI;

@@ -1,6 +1,6 @@
 import { Checkbox, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { storeActions } from "../../store";
+import { storeActions } from './store/listSlice';
 import { useDispatch } from "react-redux";
 import classes from './ItemContainer.module.css';
 import { useState } from "react";

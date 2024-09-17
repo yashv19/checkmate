@@ -1,6 +1,6 @@
 import ItemContainer from "./ItemContainer";
 import { Typography, Checkbox, Input } from "@mui/material";
-import { storeActions } from "../../store";
+import { storeActions } from './store/listSlice';
 import { useDispatch } from "react-redux";
 import { useRef, useState } from "react";
 
