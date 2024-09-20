@@ -1,7 +1,9 @@
 import { Box, Input } from '@mui/material'
+import { DeleteRounded } from '@mui/icons-material'
 import React, { } from 'react'
+import ActionButton from '../base_components/ActionButton'
 
-const Note = ({note, changeHandler, keyUpHandler, resetTimer}) => {
+const Note = ({note, changeHandler, deleteHandler }) => {
 
     return (
         <Box
@@ -14,16 +16,20 @@ const Note = ({note, changeHandler, keyUpHandler, resetTimer}) => {
                 padding: "0.5rem",
             }}
         >
-            <Input
-                value={note.title}
-                onChange={(e) => changeHandler({...note, title: e.target.value})}
-                disableUnderline
-                sx={{
-                    fontSize: "1.5rem",
-                    fontWeight: "bold",
-                    paddingBottom: "1rem"
-                }}
-            />
+            <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+                <Input
+                    value={note.title}
+                    onChange={(e) => changeHandler({...note, title: e.target.value})}
+                    disableUnderline
+                    sx={{
+                        fontSize: "1.5rem",
+                        fontWeight: "bold",
+                    }}
+                />
+                <ActionButton sx={{ backgroundColor: "rgb(255, 90, 90)" }} onClick={() => deleteHandler(note.id)}>
+                    <DeleteRounded sx={{ width: "1rem", height: "1rem" }} />
+                </ActionButton>
+            </Box>
             <textarea
                 style={{
                     width: "100%",
@@ -36,8 +42,6 @@ const Note = ({note, changeHandler, keyUpHandler, resetTimer}) => {
                 }}
                 value={note.content}
                 onChange={(e)=> {changeHandler({...note, content: e.target.value})}}
-                onKeyUp={keyUpHandler}
-                onKeyDown={resetTimer}
                 autoFocus
             />
         </Box>

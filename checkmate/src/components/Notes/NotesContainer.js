@@ -4,34 +4,6 @@ import { Box, Button, List, ListItem, ListItemButton, ListItemText, Typography }
 import classes from './NotesContainer.module.css';
 import IDB from './store/idb';
 
-// const notes = [
-//     {
-//         id: 0,
-//         title: "Note 0",
-//         content: "Note 0 content",
-//     },
-//     {
-//         id: 1,
-//         title: "Note 1 is a really long heading",
-//         content: "Note 1 content"
-//     },
-//     {
-//         id: 2,
-//         title: "Note 2",
-//         content: "Note 2 content"
-//     },
-//     {
-//         id: 3,
-//         title: "Note 3",
-//         content: "Note 3 content"
-//     },
-//     {
-//         id: 4,
-//         title: "Note 4",
-//         content: "Note 4 content"
-//     },
-// ]
-
 const NotesContainer = () => {
     const [notes, setNotes] = useState();
     const [activeNote, setActiveNote] = useState();
@@ -104,6 +76,17 @@ const NotesContainer = () => {
         }
     }
 
+    const deleteNoteHandler = async (id) => {
+        try {
+            await IDB.deleteNote(id);
+            console.log(`Note successfully deleted.`)
+            refresh();
+        }
+        catch(err) {
+            console.error(`Failed to delete. ${err}`)
+        }
+    }
+
 
     return (
         <Box className={classes.tabContainer}>
@@ -143,7 +126,7 @@ const NotesContainer = () => {
                         })}
                     </List>}
             </div>
-            {activeNote && <Note note={activeNote} changeHandler={noteUpdateHandler} />}
+            {activeNote && <Note note={activeNote} changeHandler={noteUpdateHandler} deleteHandler={deleteNoteHandler} />}
             {!notes &&
                 <Typography
                     variant="h5"

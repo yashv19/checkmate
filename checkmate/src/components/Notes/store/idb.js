@@ -126,11 +126,33 @@ const updateNote = (updatedNote) => {
     })
 }
 
+const deleteNote = (id) => {
+    return new Promise(async (resolve, reject) => {
+        const db = await openConnection();
+
+        const transaction = db.transaction(["notes"], "readwrite");
+        const objectStore = transaction.objectStore("notes");
+
+        transaction.onerror = (event) => {
+            console.log(`Failed to delete note. ${event.target.error}`)
+            reject(event.target.error);
+        }
+
+        const request = objectStore.delete(id);
+
+        request.onsuccess = (event) => {
+            console.log(`Note ${id} deleted.`);
+            resolve();
+        }
+    })
+}
+
 const IDB = {
     createNewNote,
     getAllNotes,
     getNote,
-    updateNote
+    updateNote,
+    deleteNote
 }
 
 export default IDB;
