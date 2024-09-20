@@ -3,11 +3,11 @@ import './App.css';
 // import coverPhotoSrc from './coverphoto.avif';
 import Header from './components/Header';
 import ListContainer from './components/List/ListContainer';
-import theme from './components/UI/Theme';
+import theme from './components/base_components/Theme';
 import { ThemeProvider } from '@emotion/react';
-import TabPanel from './components/UI/TabPanel';
+import TabPanel from './components/base_components/TabPanel';
 import { useState } from 'react';
-import Card from './components/Card';
+import Card from './components/base_components/Card';
 import NotesContainer from './components/Notes/NotesContainer';
 
 function App() {

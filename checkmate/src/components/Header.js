@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import Card from './Card';
+import Card from './base_components/Card';
 import classes from './Header.module.css';
 
 
