@@ -1,4 +1,4 @@
-import { Box, Input } from '@mui/material'
+import { Box, Divider, Input } from '@mui/material'
 import { DeleteRounded } from '@mui/icons-material'
 import React, { } from 'react'
 import ActionButton from '../base_components/ActionButton'
@@ -30,11 +30,12 @@ const Note = ({note, changeHandler, deleteHandler }) => {
                     <DeleteRounded sx={{ width: "1rem", height: "1rem" }} />
                 </ActionButton>
             </Box>
+            <Divider />
             <textarea
                 style={{
                     width: "100%",
                     height: "100%",
-                    py: "1rem",
+                    paddingTop: "1rem",
                     hyphens: "auto",
                     outline: "none",
                     resize: "none",
