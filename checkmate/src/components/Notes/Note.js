@@ -2,6 +2,7 @@ import { Box, Divider, Input } from '@mui/material'
 import { DeleteRounded } from '@mui/icons-material'
 import React, { } from 'react'
 import ActionButton from '../base_components/ActionButton'
+import { getRandomPlaceholder } from '../../utils'
 
 const Note = ({note, changeHandler, deleteHandler }) => {
 
@@ -47,6 +48,7 @@ const Note = ({note, changeHandler, deleteHandler }) => {
                 value={note.content}
                 onChange={(e)=> {changeHandler({...note, content: e.target.value})}}
                 autoFocus
+                placeholder={getRandomPlaceholder()}
             />
         </Box>
     )
