@@ -10,14 +10,22 @@ const NotesContainer = () => {
     const autoSaveTimerRef = useRef(null);
 
     const refresh = async () => {
-        const retrievedNotes = await IDB.getAllNotes();
-        if (retrievedNotes.length > 0) {
-            retrievedNotes.sort((a, b) => a.createdAt - b.createdAt)
-            setNotes(retrievedNotes);
-            const latest = retrievedNotes[retrievedNotes.length - 1];
-            setActiveNote(latest);
+        try {
+            const retrievedNotes = await IDB.getAllNotes();
+            if (retrievedNotes.length > 0) {
+                retrievedNotes.sort((a, b) => a.createdAt - b.createdAt)
+                setNotes(retrievedNotes);
+                const latest = retrievedNotes[retrievedNotes.length - 1];
+                setActiveNote(latest);
+            }
+            else {
+                setNotes(null);
+                setActiveNote(null);
+            }
         }
-
+        catch(err) {
+            console.error(`Error refreshing data. ${err}`)
+        }
     }
 
     useEffect(() => {
