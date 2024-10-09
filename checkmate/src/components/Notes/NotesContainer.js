@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Note from './Note'
-import { Box, Button, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
+import { Button, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
 import classes from './NotesContainer.module.css';
 import IDB from './store/idb';
+import Card from '../base_components/Card';
 
 const NotesContainer = () => {
     const [notes, setNotes] = useState();
@@ -97,7 +98,7 @@ const NotesContainer = () => {
 
 
     return (
-        <Box className={classes.tabContainer}>
+        <Card className={classes.tabContainer}>
             <div style={{ width: "25%", minWidth: "8rem", height: "100%", display: "flex", flexDirection: "column" }}>
                 <Button onClick={newNoteHandler}>➕ New note</Button>
                 {notes &&
@@ -149,7 +150,7 @@ const NotesContainer = () => {
                     📂 No Notes
                 </Typography>
             }
-        </Box>
+        </Card>
     )
 }
 

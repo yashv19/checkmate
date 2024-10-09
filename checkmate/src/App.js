@@ -34,15 +34,12 @@ function App() {
             </Tabs>
           </Card>
           <div className="vertical-spacer" />
-          <Card className="content-card">
-            <TabPanel value={tabValue} index={0}>
-              <ListContainer />
-            </TabPanel>
-            <TabPanel value={tabValue} index={1}>
-              <NotesContainer />
-            </TabPanel>
-
-          </Card>
+          <TabPanel value={tabValue} index={0}>
+            <ListContainer />
+          </TabPanel>
+          <TabPanel value={tabValue} index={1}>
+            <NotesContainer />
+          </TabPanel>
         </div>
       </div>
     </ThemeProvider>

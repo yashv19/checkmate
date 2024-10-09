@@ -1,7 +1,10 @@
 .tabContainer {
-    width: 100%;
+    width: 90%;
     height: 30rem;
     display: flex;
+    background-color: #fff;
+    max-width: 50rem;
+    align-self: center;
 }
 
 .activeNote {
