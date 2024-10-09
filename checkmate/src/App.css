@@ -5,6 +5,7 @@
   overflow: auto;
   overscroll-behavior: none;
   padding: 2rem 0rem;
+  box-sizing: border-box;
 }
 .maincontent {
   text-align: left;
