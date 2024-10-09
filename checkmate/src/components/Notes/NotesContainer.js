@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Note from './Note'
-import { Button, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
+import { Button, List, ListItem, ListItemButton, Tooltip, Typography } from '@mui/material'
 import classes from './NotesContainer.module.css';
 import IDB from './store/idb';
 import Card from '../base_components/Card';
@@ -113,38 +113,56 @@ const NotesContainer = () => {
                         {notes.toReversed().map((note) => {
                             // const displayTitle = note.title.length > 14 ? note.title.substring(0,14) + "..." : note.title;
                             return (
-                                <ListItem
-                                    disableGutters
-                                    disablePadding
-                                    key={note.id}
-                                    sx={{
-                                        width: "100%",
-                                        my: "4px",
-                                    }}
+                                <Tooltip 
+                                    title={note.title} 
+                                    disableInteractive
+                                    enterDelay={500}
+                                    slotProps={{
+                                        popper: {
+                                          modifiers: [
+                                            {
+                                              name: 'offset',
+                                              options: {
+                                                offset: [0, -14],
+                                              },
+                                            },
+                                          ],
+                                        },
+                                      }}
                                 >
-                                    <ListItemButton
-                                        disableRipple
-                                        onClick={() => noteSelectHandler(note)}
+                                    <ListItem
+                                        disableGutters
+                                        disablePadding
+                                        key={note.id}
                                         sx={{
-                                            py: 0,
-                                            borderRadius: "0.5rem",
+                                            width: "100%",
+                                            my: "4px",
                                         }}
-                                        // className={activeNote.id === note.id ? classes.activeNote : ""}
-                                        selected={activeNote.id === note.id}
                                     >
-                                        <Typography
+                                        <ListItemButton
+                                            disableRipple
+                                            onClick={() => noteSelectHandler(note)}
                                             sx={{
-                                                whiteSpace: "nowrap",
-                                                overflow: "hidden",
-                                                textOverflow: "ellipsis",
-                                                py: "0.2rem",
-                                                my: "0.2rem",                          
+                                                py: 0,
+                                                borderRadius: "0.5rem",
                                             }}
+                                            // className={activeNote.id === note.id ? classes.activeNote : ""}
+                                            selected={activeNote.id === note.id}
                                         >
-                                            {note.title}
-                                        </Typography>
-                                    </ListItemButton>
-                                </ListItem>
+                                            <Typography
+                                                sx={{
+                                                    whiteSpace: "nowrap",
+                                                    overflow: "hidden",
+                                                    textOverflow: "ellipsis",
+                                                    py: "0.2rem",
+                                                    my: "0.2rem",
+                                                }}
+                                            >
+                                                {note.title}
+                                            </Typography>
+                                        </ListItemButton>
+                                    </ListItem>
+                                </Tooltip>
                             )
                         })}
                     </List>}
