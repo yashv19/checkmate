@@ -24,7 +24,7 @@ const NotesContainer = () => {
                 setActiveNote(null);
             }
         }
-        catch(err) {
+        catch (err) {
             console.error(`Error refreshing data. ${err}`)
         }
     }
@@ -91,7 +91,7 @@ const NotesContainer = () => {
             console.log(`Note successfully deleted.`)
             refresh();
         }
-        catch(err) {
+        catch (err) {
             console.error(`Failed to delete. ${err}`)
         }
     }
@@ -99,18 +99,19 @@ const NotesContainer = () => {
 
     return (
         <Card className={classes.tabContainer}>
-            <div style={{ width: "25%", minWidth: "8rem", height: "100%", display: "flex", flexDirection: "column" }}>
+            <div style={{ minWidth: "9rem", width: "9rem", height: "100%", display: "flex", flexDirection: "column" }}>
                 <Button onClick={newNoteHandler}>➕ New note</Button>
                 {notes &&
                     <List
                         sx={{
                             height: "100%",
-                            overflow: "auto",
                             scrollbarWidth: "thin",
-                            scrollbarColor: "#ddd transparent"
+                            scrollbarColor: "#ddd transparent",
+                            width: "100%",
                         }}
                     >
                         {notes.toReversed().map((note) => {
+                            // const displayTitle = note.title.length > 14 ? note.title.substring(0,14) + "..." : note.title;
                             return (
                                 <ListItem
                                     disableGutters
@@ -118,17 +119,30 @@ const NotesContainer = () => {
                                     key={note.id}
                                     sx={{
                                         width: "100%",
-                                        my: "4px"
+                                        my: "4px",
                                     }}
                                 >
-                                    <ListItemButton 
+                                    <ListItemButton
                                         disableRipple
-                                        onClick={() => noteSelectHandler(note)} 
-                                        sx={{py: 0, borderRadius: "0.5rem"}} 
+                                        onClick={() => noteSelectHandler(note)}
+                                        sx={{
+                                            py: 0,
+                                            borderRadius: "0.5rem",
+                                        }}
                                         // className={activeNote.id === note.id ? classes.activeNote : ""}
                                         selected={activeNote.id === note.id}
                                     >
-                                        <ListItemText primary={note.title} />
+                                        <Typography
+                                            sx={{
+                                                whiteSpace: "nowrap",
+                                                overflow: "hidden",
+                                                textOverflow: "ellipsis",
+                                                py: "0.2rem",
+                                                my: "0.2rem",                          
+                                            }}
+                                        >
+                                            {note.title}
+                                        </Typography>
                                     </ListItemButton>
                                 </ListItem>
                             )

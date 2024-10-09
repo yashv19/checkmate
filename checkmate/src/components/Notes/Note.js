@@ -22,9 +22,11 @@ const Note = ({note, changeHandler, deleteHandler }) => {
                     value={note.title}
                     onChange={(e) => changeHandler({...note, title: e.target.value})}
                     disableUnderline
+                    fullWidth
                     sx={{
                         fontSize: "1.5rem",
                         fontWeight: "bold",
+                        // width: "100%"
                     }}
                 />
                 <ActionButton sx={{ backgroundColor: "rgb(255, 90, 90)" }} onClick={() => deleteHandler(note.id)}>
