@@ -3,18 +3,16 @@ import React, { useState } from 'react';
 import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
 
-const SelectableEmoji = () => {
+const SelectableEmoji = ({emojiId, onSelect}) => {
     const [showPicker, setShowPicker] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
-    const [emojiCode, setEmojiCode] = useState("card_index_dividers") //Unified code for card index divider emoji
-
 
     const newEmojiSelectHandler = (emojiData) => {
         // console.log(emojiData);
         console.log(`emoji select handler fired`)
-        setEmojiCode(emojiData.id);
         setAnchorEl(null);
         setShowPicker(false);
+        onSelect(emojiData.id);
     }
 
     const emojiClickHandler = (event) => {
@@ -38,7 +36,7 @@ const SelectableEmoji = () => {
                 onClick={emojiClickHandler}
             >
                 <em-emoji
-                    id={emojiCode}
+                    id={emojiId}
                     size="1.5rem"
                 />
             </Box>

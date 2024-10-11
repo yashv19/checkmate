@@ -29,6 +29,7 @@ const AddItem = props => {
                     id: Date.now(),
                     type: 'section_header',
                     todo: 'New Section',
+                    emojiId: "card_index_dividers"
                 }
             )
         )

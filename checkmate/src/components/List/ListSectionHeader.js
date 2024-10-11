@@ -34,6 +34,15 @@ const ListSectionHeader = props => {
         );
         SetEditing(false);
     }
+    const emojiSelectHandler = (newEmojiId) => {
+        dispatch(
+            storeActions.updateItem({
+                ...props.item,
+                emojiId: newEmojiId
+            })
+        )
+    }
+
     let editSx = {
         p: "0.6rem",
         borderRadius: '0.5rem',
@@ -64,7 +73,10 @@ const ListSectionHeader = props => {
             id={props.item.id}
 
         >
-            <SelectableEmoji emoji="🙌" />
+            <SelectableEmoji 
+                emojiId={props.item.emojiId ? props.item.emojiId : "card_index_dividers"}
+                onSelect={emojiSelectHandler}
+            />
             {!editing && sectionHeader}
             {editing && editingHeader}
         </ItemContainer>
