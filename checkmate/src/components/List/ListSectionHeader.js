@@ -4,6 +4,7 @@ import { storeActions } from './store/listSlice';
 import { useDispatch } from "react-redux";
 import { useRef, useState } from "react";
 import SelectableEmoji from "../base_components/SelectableEmoji";
+import classes from './ItemContainer.module.css';
 
 const ListSectionHeader = props => {
     const dispatch = useDispatch();
@@ -49,11 +50,11 @@ const ListSectionHeader = props => {
         boxShadow: "0 0 0.5rem 0.1rem rgba(96, 96, 96, 0.269)",
     }
 
-    const sectionHeader = <div style={{paddingLeft: "0.2rem"}}>
-        <Typography variant="h5" sx={{fontWeight: 'bold'}}> {props.item.todo} </Typography>
+    const sectionHeader = <div style={{paddingLeft: "0.2rem"}} className={classes.lileft}>
+        <Typography variant="h5" sx={{fontWeight: 'bold', width: "100%"}}> {props.item.todo} </Typography>
     </div>;
 
-    const editingHeader = <form onSubmit={editSubmitHandler}>
+    const editingHeader = <form onSubmit={editSubmitHandler} className={classes.lileft}>
         <Input
             type="text"
             fullWidth

@@ -1,6 +1,6 @@
 import ItemContainer from "./ItemContainer";
 import classes from './ItemContainer.module.css';
-import { Typography, Checkbox, Input } from "@mui/material";
+import { Typography, Checkbox, Input, Box } from "@mui/material";
 import { storeActions } from './store/listSlice';
 import { useDispatch } from "react-redux";
 import { useRef, useState } from "react";
@@ -47,12 +47,12 @@ const TodoListItem = props => {
         width: "100%",
     }
 
-    const listItem = <div className={classes.lileft}>
+    const listItem = <Box className={classes.lileft}>
         <Checkbox disableRipple checked={false} onChange={checkHandler} />
-        <Typography> {props.item.todo} </Typography>
-    </div>;
+        <Typography sx={{width: "100%"}}> {props.item.todo} </Typography>
+    </Box>;
 
-    const editingItem = <form onSubmit={editSubmitHandler}>
+    const editingItem = <form onSubmit={editSubmitHandler} className={classes.lileft}>
         <Input
             type="text"
             fullWidth
