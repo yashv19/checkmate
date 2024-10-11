@@ -25,20 +25,17 @@ const ItemContainer = props => {
     } = useSortable({ id: props.id });
 
     let sx = {
+        display: "flex",
+        alignItems: "center",
         cursor: 'default',
         m: 0,
         borderRadius: '0.5rem',
         transform: CSS.Transform.toString(transform),
         transition,
-    }
-    if (showHover) {
-        sx = {
-            ...sx,
+        "&:hover": {
             backgroundColor: 'rgba(240, 240, 240);',
         }
     }
-
-
 
     const mouseEnterHandler = () => {
         setShowHover(true);

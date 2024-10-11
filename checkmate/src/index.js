@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store';
+import { init } from 'emoji-mart';
+import data from '@emoji-mart/data';
+init( {data} ); //initialize emoji data for picker
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

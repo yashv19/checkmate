@@ -28,7 +28,7 @@ const AddItem = props => {
                 {
                     id: Date.now(),
                     type: 'section_header',
-                    todo: '🗂 New Section',
+                    todo: 'New Section',
                 }
             )
         )

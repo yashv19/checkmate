@@ -3,11 +3,9 @@ import { Box } from "@mui/system";
 import { storeActions } from './store/listSlice';
 import { useDispatch } from "react-redux";
 import classes from './ItemContainer.module.css';
-import { useState } from "react";
 
 const CompletedListItem = props => {
     const dispatch = useDispatch();
-    const [showHover, setShowHover] = useState(false);
 
     const uncheckHandler = (event) => {
         dispatch(
@@ -16,23 +14,14 @@ const CompletedListItem = props => {
             })
         )
     }
-    const mouseEnterHandler = () => {
-        setShowHover(true);
-    }
-    const mouseLeaveHandler = () => {
-        setShowHover(false);
-    }
 
     let sx = {
         cursor: 'default',
         fontStyle: 'italic',
         color: 'gray',
         m: 0,
-        borderRadius: '0.5rem'
-    }
-    if (showHover) {
-        sx = {
-            ...sx,
+        borderRadius: '0.5rem',
+        "&:hover": {
             backgroundColor: 'rgba(240, 240, 240);',
         }
     }
@@ -40,8 +29,6 @@ const CompletedListItem = props => {
     return (
         <Box
             sx={sx}
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
             className={classes.liclass} 
         >
             <div className={classes.lileft}>

@@ -1,8 +1,9 @@
 import ItemContainer from "./ItemContainer";
-import { Typography, Checkbox, Input } from "@mui/material";
+import { Typography, Input } from "@mui/material";
 import { storeActions } from './store/listSlice';
 import { useDispatch } from "react-redux";
 import { useRef, useState } from "react";
+import SelectableEmoji from "../base_components/SelectableEmoji";
 
 const ListSectionHeader = props => {
     const dispatch = useDispatch();
@@ -34,12 +35,13 @@ const ListSectionHeader = props => {
         SetEditing(false);
     }
     let editSx = {
+        p: "0.6rem",
         borderRadius: '0.5rem',
-        boxShadow: "0 0 0.5rem 0.1rem rgba(96, 96, 96, 0.269)"
+        boxShadow: "0 0 0.5rem 0.1rem rgba(96, 96, 96, 0.269)",
     }
 
-    const sectionHeader = <div>
-        <Typography variant="h5" sx={{fontWeight: 'bold', p: '0.6rem'}}> {props.item.todo} </Typography>
+    const sectionHeader = <div style={{paddingLeft: "0.2rem"}}>
+        <Typography variant="h5" sx={{fontWeight: 'bold'}}> {props.item.todo} </Typography>
     </div>;
 
     const editingHeader = <form onSubmit={editSubmitHandler}>
@@ -49,7 +51,6 @@ const ListSectionHeader = props => {
             autoFocus
             disableUnderline
             sx={editSx}
-            startAdornment={<Checkbox disabled />}
             inputRef={editRef}
             defaultValue={props.item.todo}
             onBlur={editBlurHandler}
@@ -61,7 +62,9 @@ const ListSectionHeader = props => {
             onEdit={editFocusHandler}
             onDelete={deleteHandler}
             id={props.item.id}
+
         >
+            <SelectableEmoji emoji="🙌" />
             {!editing && sectionHeader}
             {editing && editingHeader}
         </ItemContainer>

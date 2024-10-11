@@ -26,7 +26,6 @@ const Note = ({note, changeHandler, deleteHandler }) => {
                     sx={{
                         fontSize: "1.5rem",
                         fontWeight: "bold",
-                        // width: "100%"
                     }}
                 />
                 <ActionButton sx={{ backgroundColor: "rgb(255, 90, 90)" }} onClick={() => deleteHandler(note.id)}>

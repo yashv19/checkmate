@@ -114,6 +114,7 @@ const NotesContainer = () => {
                             // const displayTitle = note.title.length > 14 ? note.title.substring(0,14) + "..." : note.title;
                             return (
                                 <Tooltip 
+                                    key={note.id}
                                     title={note.title} 
                                     disableInteractive
                                     enterDelay={500}
@@ -133,7 +134,6 @@ const NotesContainer = () => {
                                     <ListItem
                                         disableGutters
                                         disablePadding
-                                        key={note.id}
                                         sx={{
                                             width: "100%",
                                             my: "4px",
