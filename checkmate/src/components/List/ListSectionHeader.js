@@ -45,8 +45,9 @@ const ListSectionHeader = props => {
     }
 
     let editSx = {
-        p: "0.6rem",
         borderRadius: '0.5rem',
+        fontSize: "1.5rem",
+        fontWeight: "bold",
         boxShadow: "0 0 0.5rem 0.1rem rgba(96, 96, 96, 0.269)",
     }
 
