@@ -108,6 +108,7 @@ const NotesContainer = () => {
                             scrollbarWidth: "thin",
                             scrollbarColor: "#ddd transparent",
                             width: "100%",
+                            overflow: "auto",
                         }}
                     >
                         {notes.toReversed().map((note) => {
