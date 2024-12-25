@@ -3,9 +3,8 @@
     flex-direction: column;
     z-index: 100;
     width: 90%;
-    max-width: 40rem;
-    align-self: center;
-    background-color: #fff;
+    max-width: 60rem;
+    height: auto;
 }
 
 .completedActions {

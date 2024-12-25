@@ -8,6 +8,7 @@ const Header = props => {
         <Card className={classes.title}>
             <Typography variant="h4" sx={{fontWeight: '600', fontStyle: "italic"}}>✔ Check Mate</Typography>
         </Card>
+        
     )
 }
 

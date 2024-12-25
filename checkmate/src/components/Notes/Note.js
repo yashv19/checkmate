@@ -37,7 +37,7 @@ const Note = ({note, changeHandler, deleteHandler }) => {
                 style={{
                     width: "100%",
                     height: "100%",
-                    fontFamily: "'Itim', -apple-system,'Roboto', sans-serif",
+                    fontFamily: "-apple-system,'Roboto', sans-serif",
                     fontSize: "1.1rem",
                     lineHeight: "1.4",
                     paddingTop: "1rem",

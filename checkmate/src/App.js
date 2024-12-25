@@ -8,42 +8,61 @@ import TabPanel from './components/base_components/TabPanel';
 import { useState } from 'react';
 import Card from './components/base_components/Card';
 import NotesContainer from './components/Notes/NotesContainer';
+import Sidebar from './components/Layout/Sidebar';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import NotesPage from './pages/NotesPage';
+import TodoListPage from './pages/TodoListPage';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Sidebar />,
+    children: [
+      { path: "/", element: <TodoListPage />},
+      { path: "/notes/:noteId", element: <NotesPage /> }
+    ]
+  }
+])
 
 function App() {
 
-  const [tabValue, setTabValue] = useState(0);
-
-  const tabChangeHandler = (e, newTabValue) => {
-    setTabValue(newTabValue)
-  }
-
   return (
-    <ThemeProvider theme={theme}>
-      <div className="wrapper">
-        <div className="maincontent">
-          <Header />
-          <div className='vertical-spacer' />
-          <Card className="tab-card">
-            <Tabs
-              value={tabValue}
-              onChange={tabChangeHandler}
-              variant="fullWidth"
-            >
-              <Tab label="Todo List" />
-              <Tab label="Notepad" />
-            </Tabs>
-          </Card>
-          <div className="vertical-spacer" />
-          <TabPanel value={tabValue} index={0}>
-            <ListContainer />
-          </TabPanel>
-          <TabPanel value={tabValue} index={1}>
-            <NotesContainer />
-          </TabPanel>
-        </div>
-      </div>
-    </ThemeProvider>
-  );
+    <RouterProvider router={router} />
+  )
+  // const [tabValue, setTabValue] = useState(0);
+
+  // const tabChangeHandler = (e, newTabValue) => {
+  //   setTabValue(newTabValue)
+  // }
+
+  // return (
+  //     <div className="wrapper">
+  //         <div className="sidebar">
+  //           <Sidebar />
+  //         </div>
+  //         <div className="content">
+  //           <Header />
+  //           <div className='vertical-spacer' />
+  //           <Card className="tab-card">
+  //             <Tabs
+  //               value={tabValue}
+  //               onChange={tabChangeHandler}
+  //               variant="fullWidth"
+  //             >
+  //               <Tab label="Todo List" />
+  //               <Tab label="Notepad" />
+  //             </Tabs>
+  //           </Card>
+  //           <div className="vertical-spacer" />
+  //           <TabPanel value={tabValue} index={0}>
+  //             <ListContainer />
+  //           </TabPanel>
+  //           <TabPanel value={tabValue} index={1}>
+  //             <NotesContainer />
+  //           </TabPanel>
+  //         </div>
+  //     </div>
+  // );
 }
 
 export default App;
