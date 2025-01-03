@@ -1,13 +1,7 @@
-import { Tabs, Tab } from '@mui/material';
 import './App.css';
-import Header from './components/Header';
-import ListContainer from './components/List/ListContainer';
+// import Header from './components/Header';
 import theme from './components/base_components/Theme';
 import { ThemeProvider } from '@emotion/react';
-import TabPanel from './components/base_components/TabPanel';
-import { useState } from 'react';
-import Card from './components/base_components/Card';
-import NotesContainer from './components/Notes/NotesContainer';
 import Sidebar from './components/Layout/Sidebar';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import NotesPage from './pages/NotesPage';
@@ -27,7 +21,9 @@ const router = createBrowserRouter([
 function App() {
 
   return (
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   )
   // const [tabValue, setTabValue] = useState(0);
 
