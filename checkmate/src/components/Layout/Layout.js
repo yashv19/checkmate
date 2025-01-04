@@ -10,7 +10,7 @@ import {
 import classes from './Layout.module.css'
 import { useEffect, useState } from 'react'
 import { Outlet, NavLink } from 'react-router-dom'
-import IDB from '../Notes/store/idb'
+import IDB from '../Notes/store/dexie'
 
 const Layout = () => {
   const [notes, setNotes] = useState()

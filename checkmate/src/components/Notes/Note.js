@@ -4,7 +4,7 @@ import { DeleteRounded } from '@mui/icons-material'
 import React, { useEffect, useRef } from 'react'
 import ActionButton from '../base_components/ActionButton'
 import { getRandomPlaceholder } from '../../utils'
-import IDB from './store/idb'
+import IDB from './store/dexie'
 
 const Note = ({ id }) => {
   const [note, setNote] = useState()
