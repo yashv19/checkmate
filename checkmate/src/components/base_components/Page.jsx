@@ -6,14 +6,16 @@ const Page = ({children, ...rest}) => {
         <Box
             sx={{
                 width: "100%",
-                height: "100vh",
-                padding: "2rem",
+                height: "100%",
+                padding: "1rem",
                 boxSizing: "border-box",
                 display: "flex",
                 justifyContent: "center",
                 overflow: "auto",
                 scrollbarWidth: "thin",
                 scrollbarColor: "#ddd transparent",
+                backgroundColor: "#fff",
+                borderRadius: "12px",
             }}
             {...rest}
         >

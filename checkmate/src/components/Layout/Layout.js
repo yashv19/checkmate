@@ -1,4 +1,5 @@
 import {
+  Box,
   Link,
   List,
   ListItem,
@@ -6,12 +7,12 @@ import {
   Tooltip,
   Typography
 } from '@mui/material'
-import classes from './Sidebar.module.css'
+import classes from './Layout.module.css'
 import { useEffect, useState } from 'react'
 import { Outlet, NavLink } from 'react-router-dom'
 import IDB from '../Notes/store/idb'
 
-const Sidebar = () => {
+const Layout = () => {
   const [notes, setNotes] = useState()
 
   const refresh = async () => {
@@ -33,14 +34,11 @@ const Sidebar = () => {
   }, []) // Load once on mount
 
   return (
-    <div className={classes.wrapper}>
+    <Box className={classes.wrapper}>
       <div className={classes.sidebar}>
-        <Typography variant='h4'>☑️ Check Mate</Typography>
+        <Typography variant='h5' sx={{fontWeight: "bold"}}>☑️ Check Mate</Typography>
         <Link to='/' component={NavLink}>
           Todo
-        </Link>
-        <Link to='/notes' component={NavLink}>
-          Notepad
         </Link>
         <Typography>Notes</Typography>
         {notes && (
@@ -60,8 +58,8 @@ const Sidebar = () => {
         )}
       </div>
       <Outlet />
-    </div>
+    </Box>
   )
 }
 
-export default Sidebar
+export default Layout

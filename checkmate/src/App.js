@@ -2,7 +2,7 @@ import './App.css';
 // import Header from './components/Header';
 import theme from './components/base_components/Theme';
 import { ThemeProvider } from '@emotion/react';
-import Sidebar from './components/Layout/Sidebar';
+import Layout from './components/Layout/Layout';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import NotesPage from './pages/NotesPage';
 import TodoListPage from './pages/TodoListPage';
@@ -10,7 +10,7 @@ import TodoListPage from './pages/TodoListPage';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Sidebar />,
+    element: <Layout />,
     children: [
       { path: "/", element: <TodoListPage />},
       { path: "/notes/:noteId", element: <NotesPage /> }
