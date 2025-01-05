@@ -142,7 +142,7 @@ const Note = ({ id }) => {
             fullWidth
             sx={{borderRadius: "12px"}}
           >
-            <DialogTitle>🗑️ Delete this note?</DialogTitle>
+            <DialogTitle sx={{fontWeight: "bold"}}>🗑️ Delete this note?</DialogTitle>
             <DialogContent>This action can't be undone.</DialogContent>
             <DialogActions sx={{p: "1rem"}}>
               <TextButton onClick={deleteHandler} sx={{mx: "0.5rem", p: "1rem",}}>Delete</TextButton>
@@ -173,7 +173,7 @@ const Note = ({ id }) => {
             changeHandler({ ...note, content: e.target.value })
           }}
           autoFocus
-          placeholder={getRandomPlaceholder()}
+          placeholder="Write something..."
         />
       )}
     </Box>
