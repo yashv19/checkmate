@@ -21,7 +21,7 @@ const Sidebar = () => {
       {/* <Typography variant='h5' sx={{ fontWeight: 'bold' }}>
         ☑️ Check Mate
       </Typography> */}
-      <img src={logo} />
+      <img src={logo} draggable={false}/>
       <div className={classes.verticalSpacer} />
       <NavLink
         to='/'
@@ -29,7 +29,7 @@ const Sidebar = () => {
           isActive ? `${classes.todo} ${classes.todoActive}` : classes.todo
         }
       >
-        Todo
+        ✅ Todo
       </NavLink>
       <Divider sx={{py: "1rem"}}/>
       <Typography variant='subtitle2'>Notes</Typography>

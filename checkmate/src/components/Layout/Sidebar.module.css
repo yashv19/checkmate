@@ -29,8 +29,8 @@
 }
     .todo:hover {
         /* background-color: rgba(179, 179, 179, 0.407); */
-        transform: translateY(-2px);
-        box-shadow: inset 0px -4px rgb(186, 186, 186);
+        transform: translateY(-3px);
+        /* box-shadow: inset 0px -4px rgb(186, 186, 186); */
     }
     .todo:active {
         transform: translateY(2px);
