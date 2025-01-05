@@ -44,6 +44,9 @@ const SelectableEmoji = ({emojiId, onSelect}) => {
                     open={showPicker}
                     anchorEl={anchorEl}
                     position="bottom-start"
+                    sx={{
+                        zIndex: "1000"
+                    }}
                 >
                     <Picker
                         data={data}
