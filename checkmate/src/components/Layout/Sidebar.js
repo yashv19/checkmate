@@ -1,53 +1,60 @@
-
-import {
-    Link,
-    List,
-    ListItem,
-    Tooltip,
-    Typography
-  } from '@mui/material'
-  import { NavLink } from 'react-router-dom'
-  import IDB from '../Notes/store/dexie'
-  import { useLiveQuery } from 'dexie-react-hooks'
+import { Divider, Link, List, ListItem, Tooltip, Typography } from '@mui/material'
+import { NavLink } from 'react-router-dom'
+import IDB from '../Notes/store/dexie'
+import { useLiveQuery } from 'dexie-react-hooks'
+import classes from './Sidebar.module.css';
+import logo from '../../assets/long-logo.png';
 
 const Sidebar = () => {
+  const notes = useLiveQuery(async () => {
+    const notesList = await IDB.getAllNotes()
+    if (notesList.length > 0) {
+      return notesList.sort((a, b) => (a.createdAt = b.createdAt))
+    }
+    return []
+  })
 
-    const notes = useLiveQuery(async () => {
-        const notesList = await IDB.getAllNotes();
-        if (notesList.length > 0) {
-            return notesList.sort((a,b) => a.createdAt = b.createdAt);
+  return (
+    <div
+      className={classes.sidebar}
+    >
+      {/* <Typography variant='h5' sx={{ fontWeight: 'bold' }}>
+        ☑️ Check Mate
+      </Typography> */}
+      <img src={logo} />
+      <div className={classes.verticalSpacer} />
+      <NavLink
+        to='/'
+        className={({ isActive }) =>
+          isActive ? `${classes.todo} ${classes.todoActive}` : classes.todo
         }
-        return [];
-    })
-
-    return (
-        <div style={{
-            width: "20rem",
-            display: "flex",
-            flexDirection: "column",
-        }}>
-        <Typography variant='h5' sx={{fontWeight: "bold"}}>☑️ Check Mate</Typography>
-        <Link to='/' component={NavLink}>
-          Todo
-        </Link>
-        <Typography>Notes</Typography>
-        {notes && (
-          <List>
-            {notes.toReversed().map(note => {
-              return (
-                <ListItem
-                  key={note.id}
+      >
+        Todo
+      </NavLink>
+      <Divider sx={{py: "1rem"}}/>
+      <Typography variant='subtitle2'>Notes</Typography>
+      {notes && (
+        <List>
+          {notes.toReversed().map(note => {
+            return (
+              <ListItem key={note.id} sx={{ p: "0.2rem" }}>
+                <NavLink
+                  to={`/notes/${note.id}`}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${classes.noteLink} ${classes.noteLinkActive}`
+                      : classes.noteLink
+                  }
                 >
-                  <Link to={`/notes/${note.id}`} component={NavLink}>
-                    <Typography>{note.title}</Typography>
-                  </Link>
-                </ListItem>
-              )
-            })}
-          </List>
-        )}
-      </div>
-    )
+                  {note.title}
+                </NavLink>
+              </ListItem>
+            )
+          })}
+        </List>
+      )}
+    </div>
+  )
 }
 
-export default Sidebar;
+export default Sidebar
