@@ -1,0 +1,23 @@
+.button {
+    color: inherit;
+    font-weight: bold;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(179, 179, 179, 0.407);
+    border-radius: 8px;
+    width: auto;
+    height: 3rem;
+    padding: auto;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    box-shadow: inset 0px -2px rgb(186, 186, 186);
+}
+    .button:hover {
+        background-color: rgba(143, 142, 142, 0.407);
+        transform: translateY(-3px);
+    }
+    .button:active {
+        transform: translateY(2px);
+        box-shadow: inset 0px -2px rgb(186, 186, 186);
+    }
