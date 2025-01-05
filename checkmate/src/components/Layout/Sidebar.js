@@ -32,9 +32,9 @@ const Sidebar = () => {
         ✅ Todo
       </NavLink>
       <Divider sx={{py: "1rem"}}/>
-      <Typography variant='subtitle2'>Notes</Typography>
+      <Typography variant='subtitle2' sx={{pt: '1rem', fontWeight: 'bold', color: '#022c87'}}>Notes</Typography>
       {notes && (
-        <List>
+        <List sx={{py: 0}}>
           {notes.toReversed().map(note => {
             return (
               <ListItem key={note.id} sx={{ p: "0.2rem" }}>
