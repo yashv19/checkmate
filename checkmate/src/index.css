@@ -1,17 +1,18 @@
-
-body {
+html, body {
+  /* CSS Reset */
   margin: 0;
-  font-family: 'Itim', -apple-system,'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-size: 20px 20px;
-  background-image: radial-gradient(circle, #bcbcbc 1px, rgba(0, 0, 0, 0) 1px);
-  overflow: hidden;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: -apple-system,'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #E7F0FF;
+  overflow: hidden;
 }
 
 /* Scrollbar styles -- These work for webkit browsers but I applied the styles directly with scrollbar-color CSS property */

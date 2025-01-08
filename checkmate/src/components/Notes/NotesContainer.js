@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Note from './Note'
-import { Button, List, ListItem, ListItemButton, Tooltip, Typography } from '@mui/material'
+import { Box, Button, List, ListItem, ListItemButton, Tooltip, Typography } from '@mui/material'
 import classes from './NotesContainer.module.css';
 import IDB from './store/idb';
 import Card from '../base_components/Card';
@@ -34,7 +34,6 @@ const NotesContainer = () => {
     }, []); //Load notes on component mount
 
     const noteSelectHandler = (newNote) => {
-        console.log(newNote);
         setActiveNote(newNote);
     }
 
@@ -53,7 +52,6 @@ const NotesContainer = () => {
     }
 
     const autoSave = async (updatedNote) => {
-        console.log(`Saving note: ${JSON.stringify(updatedNote)}`)
         try {
             await IDB.updateNote(updatedNote);
 
@@ -88,7 +86,6 @@ const NotesContainer = () => {
     const deleteNoteHandler = async (id) => {
         try {
             await IDB.deleteNote(id);
-            console.log(`Note successfully deleted.`)
             refresh();
         }
         catch (err) {
@@ -98,7 +95,7 @@ const NotesContainer = () => {
 
 
     return (
-        <Card className={classes.tabContainer}>
+        <Box className={classes.tabContainer}>
             <div style={{ minWidth: "9rem", width: "9rem", height: "100%", display: "flex", flexDirection: "column" }}>
                 <Button onClick={newNoteHandler}>➕ New note</Button>
                 {notes &&
@@ -183,7 +180,7 @@ const NotesContainer = () => {
                     📂 No Notes
                 </Typography>
             }
-        </Card>
+        </Box>
     )
 }
 
