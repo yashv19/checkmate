@@ -10,17 +10,19 @@ const Note = ({ id }) => {
   const autoSaveTimerRef = useRef()
   const navigate = useNavigate();
 
-  const load = async () => {
-    try {
-      const retrievedNote = await IDB.getNote(id)
-      setNote(retrievedNote)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  
 
   useEffect(() => {
-    load()
+    const load = async () => {
+      try {
+        const retrievedNote = await IDB.getNote(id)
+        setNote(retrievedNote)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    
+    load();
   }, [id]);
 
   const changeHandler = updatedNote => {

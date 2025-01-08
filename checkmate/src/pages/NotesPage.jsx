@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import Page from "../components/base_components/Page";
-import { Typography } from "@mui/material";
 import Note from "../components/Notes/Note";
 
 const NotesPage = () => {
