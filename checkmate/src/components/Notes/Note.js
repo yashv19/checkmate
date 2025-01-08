@@ -1,11 +1,8 @@
 import { useState } from 'react'
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Divider, IconButton, Input, Menu, MenuItem } from '@mui/material'
-import { DeleteRounded, Menu as MenuButton, MoreVertRounded } from '@mui/icons-material'
+import { MoreVertRounded } from '@mui/icons-material'
 import React, { useEffect, useRef } from 'react'
-import ActionButton from '../base_components/ActionButton'
-import { getRandomPlaceholder } from '../../utils'
 import IDB from './store/dexie'
-import TextButton from '../base_components/TextButton'
 import { useNavigate } from 'react-router-dom'
 
 const Note = ({ id }) => {
@@ -24,7 +21,7 @@ const Note = ({ id }) => {
 
   useEffect(() => {
     load()
-  }, [id])
+  }, [id]);
 
   const changeHandler = updatedNote => {
     setNote(prevNote => {
@@ -41,7 +38,6 @@ const Note = ({ id }) => {
   }
 
   const autoSave = async updatedNote => {
-    console.log(`Saving note: ${JSON.stringify(updatedNote)}`)
     try {
       await IDB.updateNote(updatedNote)
     } catch (err) {
@@ -52,7 +48,6 @@ const Note = ({ id }) => {
   const deleteHandler = async () => {
     try {
       await IDB.deleteNote(id)
-      console.log(`Note successfully deleted.`)
       navigate('/')
     } catch (err) {
       console.error(`Failed to delete. ${err}`)
@@ -107,6 +102,7 @@ const Note = ({ id }) => {
             onChange={e => changeHandler({ ...note, title: e.target.value })}
             disableUnderline
             fullWidth
+            placeholder='Untitled'
             sx={{
               fontSize: '1.8rem',
               fontWeight: 'bold',
@@ -132,7 +128,7 @@ const Note = ({ id }) => {
             }}
             elevation={1}
           >
-            <MenuItem onClick={handleDeleteDialogOpen}>🗑️ Delete</MenuItem>
+            <MenuItem disableRipple onClick={handleDeleteDialogOpen}>🗑️ Delete</MenuItem>
           </Menu>
           <Dialog
             id="delete_note_confirm_dialog"
@@ -145,8 +141,8 @@ const Note = ({ id }) => {
             <DialogTitle sx={{fontWeight: "bold"}}>🗑️ Delete this note?</DialogTitle>
             <DialogContent>This action can't be undone.</DialogContent>
             <DialogActions sx={{p: "1rem"}}>
-              <TextButton onClick={deleteHandler} sx={{mx: "0.5rem", p: "1rem",}}>Delete</TextButton>
-              <TextButton onClick={handleDeleteDialogClose} sx={{mx: "0.5rem", p: "1rem"}}>Cancel</TextButton>
+              <Button disableRipple onClick={deleteHandler} sx={{mx: "0.5rem", p: "1rem",}}>Delete</Button>
+              <Button disableRipple onClick={handleDeleteDialogClose} sx={{mx: "0.5rem", p: "1rem"}}>Cancel</Button>
             </DialogActions>
           </Dialog>
         </Box>

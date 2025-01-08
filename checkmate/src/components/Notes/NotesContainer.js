@@ -34,7 +34,6 @@ const NotesContainer = () => {
     }, []); //Load notes on component mount
 
     const noteSelectHandler = (newNote) => {
-        console.log(newNote);
         setActiveNote(newNote);
     }
 
@@ -53,7 +52,6 @@ const NotesContainer = () => {
     }
 
     const autoSave = async (updatedNote) => {
-        console.log(`Saving note: ${JSON.stringify(updatedNote)}`)
         try {
             await IDB.updateNote(updatedNote);
 
@@ -88,7 +86,6 @@ const NotesContainer = () => {
     const deleteNoteHandler = async (id) => {
         try {
             await IDB.deleteNote(id);
-            console.log(`Note successfully deleted.`)
             refresh();
         }
         catch (err) {

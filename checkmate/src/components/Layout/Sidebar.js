@@ -1,17 +1,15 @@
 import {
   Divider,
-  Link,
   List,
   ListItem,
-  Tooltip,
-  Typography
+  Typography,
+  Button
 } from '@mui/material'
 import { NavLink, useNavigate } from 'react-router-dom'
 import IDB from '../Notes/store/dexie'
 import { useLiveQuery } from 'dexie-react-hooks'
 import classes from './Sidebar.module.css'
-import logo from '../../assets/long-logo.png'
-import TextButton from '../base_components/TextButton'
+import logo from '../../assets/header-logo.png'
 
 const Sidebar = () => {
   const navigate = useNavigate()
@@ -45,7 +43,7 @@ const Sidebar = () => {
       {/* <Typography variant='h5' sx={{ fontWeight: 'bold' }}>
         ☑️ Check Mate
       </Typography> */}
-      <img src={logo} draggable={false} />
+      <img src={logo} alt="checkmate logo" draggable={false} />
       <div className={classes.verticalSpacer} />
       <NavLink
         to='/'
@@ -62,20 +60,19 @@ const Sidebar = () => {
       >
         Notes
       </Typography>
-      <TextButton
+      <Button
         sx={{
           backgroundColor: '#0046df20',
-          textTransform: 'none',
           height: 'auto',
           p: '0.3rem',
           my: '0.3rem',
           color: 'black',
-          fontWeight: 'bold'
         }}
         onClick={newNoteHandler}
+        disableRipple
       >
         ✍️ New Note
-      </TextButton>
+      </Button>
       {notes && (
         <List sx={{ pt: 0, pb: "1rem", overflowY: "auto" }}>
           {notes.toReversed().map(note => {

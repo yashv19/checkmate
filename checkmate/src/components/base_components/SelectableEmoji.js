@@ -8,8 +8,6 @@ const SelectableEmoji = ({emojiId, onSelect}) => {
     const [anchorEl, setAnchorEl] = useState(null);
 
     const newEmojiSelectHandler = (emojiData) => {
-        // console.log(emojiData);
-        console.log(`emoji select handler fired`)
         setAnchorEl(null);
         setShowPicker(false);
         onSelect(emojiData.id);

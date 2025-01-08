@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { storeActions } from './store/listSlice';
 import { useDispatch } from "react-redux";
 import {Button } from "@mui/material";
-import { AddRounded } from "@mui/icons-material";
 
 const AddItem = props => {
     const todoRef = useRef();
@@ -37,14 +36,21 @@ const AddItem = props => {
     return (
         <>
             <Button 
-                startIcon={< AddRounded/>}
+                // startIcon={< AddRounded/>}
                 sx={{
                     alignSelf: 'end',
-
+                    backgroundColor: "transparent",
+                    boxShadow: "none",
+                    height: "auto",
+                    fontWeight: "normal",
+                    "&:hover": {
+                        boxShadow: "none"
+                    }
                 }}
                 onClick={newSectionHandler}
+                disableRipple
             >
-                New Section
+                ➕ New Section
             </Button>
             <Divider />
             <form onSubmit={submitHandler}>

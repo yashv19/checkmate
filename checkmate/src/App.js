@@ -1,5 +1,4 @@
 import './App.css';
-// import Header from './components/Header';
 import theme from './components/base_components/Theme';
 import { ThemeProvider } from '@emotion/react';
 import Layout from './components/Layout/Layout';
