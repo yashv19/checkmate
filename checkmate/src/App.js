@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import NotesPage from './pages/NotesPage';
 import TodoListPage from './pages/TodoListPage';
+import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -12,9 +13,14 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <TodoListPage />},
-      { path: "/notes/:noteId", element: <NotesPage /> }
+      { path: "/notes/:noteId", element: <NotesPage /> },
+      { path: "*", element: <NotFound /> }
     ]
-  }
+  },
+  // {
+  //   path: '*',
+  //   element: <NotFound />
+  // }
 ])
 
 function App() {

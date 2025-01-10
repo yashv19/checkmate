@@ -16,14 +16,19 @@ const Note = ({ id }) => {
     const load = async () => {
       try {
         const retrievedNote = await IDB.getNote(id)
-        setNote(retrievedNote)
+        if(retrievedNote) {
+          setNote(retrievedNote)
+        }
+        else {
+          navigate('/404')
+        }
       } catch (err) {
         console.log(err)
       }
     }
     
     load();
-  }, [id]);
+  }, [id, navigate]);
 
   const changeHandler = updatedNote => {
     setNote(prevNote => {
