@@ -4,6 +4,7 @@ import { MoreVertRounded } from '@mui/icons-material'
 import React, { useEffect, useRef } from 'react'
 import IDB from './store/dexie'
 import { useNavigate } from 'react-router-dom'
+import NoteMenu from './NoteMenu'
 
 const Note = ({ id }) => {
   const [note, setNote] = useState()
@@ -49,15 +50,6 @@ const Note = ({ id }) => {
       await IDB.updateNote(updatedNote)
     } catch (err) {
       console.error(`Failed to save updates. ${err}`)
-    }
-  }
-
-  const deleteHandler = async () => {
-    try {
-      await IDB.deleteNote(id)
-      navigate('/')
-    } catch (err) {
-      console.error(`Failed to delete. ${err}`)
     }
   }
 
@@ -115,43 +107,7 @@ const Note = ({ id }) => {
               fontWeight: 'bold',
             }}
           />
-          <IconButton
-            onClick={menuOpenHandler}
-          >
-            <MoreVertRounded />
-          </IconButton>
-          <Menu
-            id="note_3_dot_menu"
-            anchorEl={anchorEl}
-            open={menuOpen}
-            onClose={menuCloseHandler}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            elevation={1}
-          >
-            <MenuItem disableRipple onClick={handleDeleteDialogOpen}>🗑️ Delete</MenuItem>
-          </Menu>
-          <Dialog
-            id="delete_note_confirm_dialog"
-            open={deleteDialogOpen}
-            onClose={handleDeleteDialogClose}
-            maxWidth="xs"
-            fullWidth
-            sx={{borderRadius: "12px"}}
-          >
-            <DialogTitle sx={{fontWeight: "bold"}}>🗑️ Delete this note?</DialogTitle>
-            <DialogContent>This action can't be undone.</DialogContent>
-            <DialogActions sx={{p: "1rem"}}>
-              <Button disableRipple onClick={deleteHandler} sx={{mx: "0.5rem", p: "1rem",}}>Delete</Button>
-              <Button disableRipple onClick={handleDeleteDialogClose} sx={{mx: "0.5rem", p: "1rem"}}>Cancel</Button>
-            </DialogActions>
-          </Dialog>
+          <NoteMenu noteId={id} />
         </Box>
       )}
       <Divider />
