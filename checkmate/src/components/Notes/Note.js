@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Divider, IconButton, Input, Menu, MenuItem } from '@mui/material'
-import { MoreVertRounded } from '@mui/icons-material'
+import { Box, Divider, Input,} from '@mui/material'
 import React, { useEffect, useRef } from 'react'
 import IDB from './store/dexie'
 import { useNavigate } from 'react-router-dom'
@@ -51,29 +50,6 @@ const Note = ({ id }) => {
     } catch (err) {
       console.error(`Failed to save updates. ${err}`)
     }
-  }
-
-  //Menu
-  const [anchorEl, setAnchorEl] = useState(null);
-  const menuOpen = Boolean(anchorEl);
-
-  const menuOpenHandler = (e) => {
-    setAnchorEl(e.currentTarget);
-  }
-  const menuCloseHandler = () => {
-    setAnchorEl(null);
-  }
-
-  //Delete alert dialog
-  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-
-  const handleDeleteDialogOpen = () => {
-    setDeleteDialogOpen(true);
-  }
-
-  const handleDeleteDialogClose = () => {
-    setDeleteDialogOpen(false);
-    setAnchorEl(null);
   }
 
   return (
