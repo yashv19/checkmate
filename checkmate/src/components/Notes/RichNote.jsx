@@ -1,8 +1,18 @@
-import {
-  useEditor,
-  EditorContent
-} from '@tiptap/react'
-import StarterKit from '@tiptap/starter-kit'
+import { useEditor, EditorContent } from '@tiptap/react'
+import Text from '@tiptap/extension-text'
+import Paragraph from '@tiptap/extension-paragraph'
+import Document from '@tiptap/extension-document'
+import ListItem from '@tiptap/extension-list-item'
+import OrderedList from '@tiptap/extension-ordered-list'
+import BulletList from '@tiptap/extension-bullet-list'
+import HardBreak from '@tiptap/extension-hard-break'
+import CodeBlock from '@tiptap/extension-code-block'
+import DropCursor from '@tiptap/extension-dropcursor'
+import History from '@tiptap/extension-history'
+import Heading from '@tiptap/extension-heading'
+import Bold from '@tiptap/extension-bold'
+import Code from '@tiptap/extension-code'
+import Italic from '@tiptap/extension-italic'
 import Placeholder from '@tiptap/extension-placeholder'
 import { useState } from 'react'
 import { Box, Divider, Input } from '@mui/material'
@@ -10,9 +20,36 @@ import React, { useEffect, useRef } from 'react'
 import IDB from './store/dexie'
 import { useNavigate } from 'react-router-dom'
 import NoteMenu from './NoteMenu'
+import classes from './RichNote.module.css'
 
 const extensions = [
-  StarterKit,
+  Document,
+  Text,
+  Paragraph,
+  HardBreak,
+  ListItem,
+  OrderedList,
+  BulletList,
+  Bold,
+  Code.configure({
+    HTMLAttributes: {
+      class: `${classes.code}`
+    }
+  }),
+  CodeBlock.configure({
+    HTMLAttributes: {
+      class: `${classes.codeblock}`
+    }
+  }),
+  Italic,
+  Heading.configure({
+    levels: [1],
+    HTMLAttributes: {
+      class: `${classes.heading}`
+    }
+  }),
+  History,
+  DropCursor,
   Placeholder.configure({
     placeholder: 'Write something...'
   })
@@ -20,8 +57,27 @@ const extensions = [
 
 const RichNote = ({ id }) => {
   const [note, setNote] = useState()
+  const [content, setContent] = useState()
   const autoSaveTimerRef = useRef()
   const navigate = useNavigate()
+
+  const updateHandler = ({ editor }) => {
+    setContent(editor.getHTML())
+
+    if (autoSaveTimerRef.current) {
+      clearTimeout(autoSaveTimerRef.current)
+    }
+
+    autoSaveTimerRef.current = setTimeout(() => {
+      autoSave()
+    }, 1000)
+  }
+
+  const editor = useEditor({
+    extensions: extensions,
+    onUpdate: updateHandler,
+    autofocus: 'end'
+  })
 
   useEffect(() => {
     const load = async () => {
@@ -40,7 +96,7 @@ const RichNote = ({ id }) => {
     }
 
     load()
-  }, [id, navigate])
+  }, [id, navigate, editor])
 
   const changeHandler = updatedNote => {
     setNote(prevNote => {
@@ -61,34 +117,12 @@ const RichNote = ({ id }) => {
       ...note,
       content: content
     }
-    console.log(latest)
     try {
       await IDB.updateNote(latest)
     } catch (err) {
       console.error(`Failed to save updates. ${err}`)
     }
   }
-
-  //Rich text editor
-  const [content, setContent] = useState()
-
-  const updateHandler = ({ editor }) => {
-    console.log(editor.getHTML())
-    setContent(editor.getHTML())
-
-    if (autoSaveTimerRef.current) {
-      clearTimeout(autoSaveTimerRef.current)
-    }
-
-    autoSaveTimerRef.current = setTimeout(() => {
-      autoSave()
-    }, 1000)
-  }
-
-  const editor = useEditor({
-    extensions: extensions,
-    onUpdate: updateHandler
-  })
 
   return (
     <Box
@@ -125,37 +159,12 @@ const RichNote = ({ id }) => {
         </Box>
       )}
       <Divider />
-      <EditorContent editor={editor} />
-      {/* <EditorProvider
-        extensions={extensions}
-        style={{
-          width: '100%',
-          height: '100%',
-          fontFamily: "-apple-system,'Roboto', sans-serif",
-          fontSize: '1.1rem',
-          lineHeight: '1.4',
-          padding: '1rem',
-          hyphens: 'auto',
-          outline: 'none',
-          resize: 'none',
-          border: '0px',
-          boxSizing: 'border-box'
-        }}
-        autoFocus={true}
-      >
-      </EditorProvider> */}
+      <EditorContent
+        editor={editor}
+        style={{ height: '100%', width: '100%' }}
+      />
     </Box>
   )
-
-  // return (
-  //     <EditorProvider extensions={extensions} content={content}>
-  //         <Editor>
-
-  //         </Editor>
-  //         <BubbleMenu editor={null}>This is the bubble menu</BubbleMenu>
-  //         <FloatingMenu editor={null}>This is the floating menu</FloatingMenu>
-  //     </EditorProvider>
-  // )
 }
 
 export default RichNote

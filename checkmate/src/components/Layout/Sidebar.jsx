@@ -1,10 +1,4 @@
-import {
-  Divider,
-  List,
-  ListItem,
-  Typography,
-  Button
-} from '@mui/material'
+import { Divider, List, ListItem, Typography, Button } from '@mui/material'
 import { NavLink, useNavigate } from 'react-router-dom'
 import IDB from '../Notes/store/dexie'
 import { useLiveQuery } from 'dexie-react-hooks'
@@ -17,7 +11,7 @@ const Sidebar = () => {
   const notes = useLiveQuery(async () => {
     const notesList = await IDB.getAllNotes()
     if (notesList.length > 0) {
-      return notesList.sort((a, b) => (a.createdAt - b.createdAt))
+      return notesList.sort((a, b) => a.createdAt - b.createdAt)
     }
     return []
   })
@@ -43,7 +37,7 @@ const Sidebar = () => {
       {/* <Typography variant='h5' sx={{ fontWeight: 'bold' }}>
         ☑️ Check Mate
       </Typography> */}
-      <img src={logo} alt="checkmate logo" draggable={false} />
+      <img src={logo} alt='checkmate logo' draggable={false} />
       <div className={classes.verticalSpacer} />
       <NavLink
         to='/'
@@ -66,7 +60,7 @@ const Sidebar = () => {
           height: 'auto',
           p: '0.3rem',
           my: '0.3rem',
-          color: 'black',
+          color: 'black'
         }}
         onClick={newNoteHandler}
         disableRipple
@@ -74,7 +68,15 @@ const Sidebar = () => {
         ✍️ New Note
       </Button>
       {notes && (
-        <List sx={{ pt: 0, pb: "1rem", overflowY: "auto" }}>
+        <List
+          sx={{
+            pt: 0,
+            pb: '1rem',
+            overflowY: 'auto',
+            scrollbarWidth: 'thin',
+            scrollbarColor: '#ddd transparent'
+          }}
+        >
           {notes.toReversed().map(note => {
             return (
               <ListItem key={note.id} sx={{ p: '0.2rem' }}>
