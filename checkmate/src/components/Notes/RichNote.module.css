@@ -1,0 +1,20 @@
+.heading {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.code {
+    background-color: #E7F0FF;
+    color: #022c87;
+    font-size: 1rem;
+    padding: 0.2rem;
+    border-radius: 4px;
+}
+
+.codeblock {
+    padding: 2rem;
+    background-color: #E7F0FF;
+    font-size: 1rem;
+    color: #022c87;
+    border-radius: 8px;
+}

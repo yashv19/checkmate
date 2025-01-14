@@ -3,7 +3,6 @@ import Note from './Note'
 import { Box, Button, List, ListItem, ListItemButton, Tooltip, Typography } from '@mui/material'
 import classes from './NotesContainer.module.css';
 import IDB from './store/idb';
-import Card from '../base_components/Card';
 
 const NotesContainer = () => {
     const [notes, setNotes] = useState();

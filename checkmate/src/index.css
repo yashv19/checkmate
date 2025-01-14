@@ -15,6 +15,25 @@ body {
   overflow: hidden;
 }
 
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.tiptap {
+    width: 100%;
+    height: 100%;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    padding: 1rem;
+    /* hyphens: auto; */
+    outline: none;
+    box-sizing: border-box;
+}
+
 /* Scrollbar styles -- These work for webkit browsers but I applied the styles directly with scrollbar-color CSS property */
 /* 
 ::-webkit-scrollbar {

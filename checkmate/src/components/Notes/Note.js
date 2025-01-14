@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Divider, IconButton, Input, Menu, MenuItem } from '@mui/material'
-import { MoreVertRounded } from '@mui/icons-material'
+import { Box, Divider, Input,} from '@mui/material'
 import React, { useEffect, useRef } from 'react'
 import IDB from './store/dexie'
 import { useNavigate } from 'react-router-dom'
+import NoteMenu from './NoteMenu'
 
 const Note = ({ id }) => {
   const [note, setNote] = useState()
@@ -52,38 +52,6 @@ const Note = ({ id }) => {
     }
   }
 
-  const deleteHandler = async () => {
-    try {
-      await IDB.deleteNote(id)
-      navigate('/')
-    } catch (err) {
-      console.error(`Failed to delete. ${err}`)
-    }
-  }
-
-  //Menu
-  const [anchorEl, setAnchorEl] = useState(null);
-  const menuOpen = Boolean(anchorEl);
-
-  const menuOpenHandler = (e) => {
-    setAnchorEl(e.currentTarget);
-  }
-  const menuCloseHandler = () => {
-    setAnchorEl(null);
-  }
-
-  //Delete alert dialog
-  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-
-  const handleDeleteDialogOpen = () => {
-    setDeleteDialogOpen(true);
-  }
-
-  const handleDeleteDialogClose = () => {
-    setDeleteDialogOpen(false);
-    setAnchorEl(null);
-  }
-
   return (
     <Box
       sx={{
@@ -115,43 +83,7 @@ const Note = ({ id }) => {
               fontWeight: 'bold',
             }}
           />
-          <IconButton
-            onClick={menuOpenHandler}
-          >
-            <MoreVertRounded />
-          </IconButton>
-          <Menu
-            id="note_3_dot_menu"
-            anchorEl={anchorEl}
-            open={menuOpen}
-            onClose={menuCloseHandler}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            elevation={1}
-          >
-            <MenuItem disableRipple onClick={handleDeleteDialogOpen}>🗑️ Delete</MenuItem>
-          </Menu>
-          <Dialog
-            id="delete_note_confirm_dialog"
-            open={deleteDialogOpen}
-            onClose={handleDeleteDialogClose}
-            maxWidth="xs"
-            fullWidth
-            sx={{borderRadius: "12px"}}
-          >
-            <DialogTitle sx={{fontWeight: "bold"}}>🗑️ Delete this note?</DialogTitle>
-            <DialogContent>This action can't be undone.</DialogContent>
-            <DialogActions sx={{p: "1rem"}}>
-              <Button disableRipple onClick={deleteHandler} sx={{mx: "0.5rem", p: "1rem",}}>Delete</Button>
-              <Button disableRipple onClick={handleDeleteDialogClose} sx={{mx: "0.5rem", p: "1rem"}}>Cancel</Button>
-            </DialogActions>
-          </Dialog>
+          <NoteMenu noteId={id} />
         </Box>
       )}
       <Divider />
