@@ -57,19 +57,18 @@ const extensions = [
 
 const RichNote = ({ id }) => {
   const [note, setNote] = useState()
-  const [content, setContent] = useState()
   const autoSaveTimerRef = useRef()
   const navigate = useNavigate()
 
   const updateHandler = ({ editor }) => {
-    setContent(editor.getHTML())
+    const newContent = editor.getHTML();
 
     if (autoSaveTimerRef.current) {
       clearTimeout(autoSaveTimerRef.current)
     }
 
     autoSaveTimerRef.current = setTimeout(() => {
-      autoSave()
+      autoSave({content: newContent})
     }, 1000)
   }
 
@@ -85,7 +84,6 @@ const RichNote = ({ id }) => {
         const retrievedNote = await IDB.getNote(id)
         if (retrievedNote) {
           setNote(retrievedNote)
-          setContent(retrievedNote.content)
           editor.commands.setContent(retrievedNote.content)
         } else {
           navigate('/404')
@@ -106,16 +104,15 @@ const RichNote = ({ id }) => {
     if (autoSaveTimerRef.current) {
       clearTimeout(autoSaveTimerRef.current)
     }
-
     autoSaveTimerRef.current = setTimeout(() => {
-      autoSave()
+      autoSave(updatedNote)
     }, 1000)
   }
 
-  const autoSave = async () => {
+  const autoSave = async (saveData) => {
     const latest = {
       ...note,
-      content: content
+      ...saveData
     }
     try {
       await IDB.updateNote(latest)
