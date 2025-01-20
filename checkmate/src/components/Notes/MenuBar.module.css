@@ -1,0 +1,29 @@
+.menubarWrapper {
+    /* border: solid 1px #ddd; */
+    background-color: #fff;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 2rem;
+    z-index: 1000;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.button {
+    color: #656565;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.activeButton {
+    color: #004FFF;
+    background-color: #9cb6ee;
+    padding: 1rem;
+    box-sizing: border-box;
+}

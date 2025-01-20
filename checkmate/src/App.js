@@ -1,6 +1,6 @@
 import './App.css';
 import theme from './components/base_components/Theme';
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from '@mui/material/styles';
 import Layout from './components/Layout/Layout';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import NotesPage from './pages/NotesPage';

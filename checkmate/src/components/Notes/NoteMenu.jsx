@@ -86,14 +86,12 @@ const NoteMenu = ({ noteId }) => {
         <DialogContent>This action can't be undone.</DialogContent>
         <DialogActions sx={{ p: '1rem' }}>
           <Button
-            disableRipple
             onClick={deleteHandler}
             sx={{ mx: '0.5rem', p: '1rem' }}
           >
             Delete
           </Button>
           <Button
-            disableRipple
             onClick={handleDeleteDialogClose}
             sx={{ mx: '0.5rem', p: '1rem' }}
           >

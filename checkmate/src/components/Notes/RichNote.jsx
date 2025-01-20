@@ -21,6 +21,7 @@ import IDB from './store/dexie'
 import { useNavigate } from 'react-router-dom'
 import NoteMenu from './NoteMenu'
 import classes from './RichNote.module.css'
+import MenuBar from './MenuBar'
 
 const extensions = [
   Document,
@@ -156,9 +157,10 @@ const RichNote = ({ id }) => {
         </Box>
       )}
       <Divider />
+      <MenuBar editor={editor} />
       <EditorContent
         editor={editor}
-        style={{ height: '100%', width: '100%' }}
+        style={{ height: '100%', width: '100%', paddingRight: '2rem', boxSizing: "border-box" }}
       />
     </Box>
   )
